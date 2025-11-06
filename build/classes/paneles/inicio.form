@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="pnlPrincipal" alignment="1" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <Component id="pnlPrincipal" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="pnlPrincipal">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="ContenedorMenu" max="32767" attributes="0"/>
+                      <Component id="ContenedorTitulo" max="32767" attributes="0"/>
+                      <Component id="ContenedorTablaAsistenciaHorario" alignment="1" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="ContenedorTitulo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="ContenedorMenu" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                  <Component id="ContenedorTablaAsistenciaHorario" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="ContenedorTitulo">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="Titulo" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="Titulo" min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="Titulo">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="NSimSun" size="24" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Inicio"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="ContenedorMenu">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="SubirCatalogo" min="-2" pref="213" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SubirProductosIVA" min="-2" pref="213" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SubirMenuSemanal" min="-2" pref="213" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="317" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="SubirCatalogo" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="SubirProductosIVA" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="SubirMenuSemanal" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="SubirCatalogo">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/archivo.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Subir Catalogo"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubirCatalogoActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="SubirProductosIVA">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/icondia.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Subir Productos IVA"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubirProductosIVAActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="SubirMenuSemanal">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/icondia.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Subir Menu Semanal"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubirMenuSemanalActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="ContenedorTablaAsistenciaHorario">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ProgressBar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TituloDeLaTabla" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="TituloDeLaTabla" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="ProgressBar" min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JTabbedPane" name="TituloDeLaTabla">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="ScrollTablaCatalogo">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Catalogo">
+                        <Property name="tabTitle" type="java.lang.String" value="Catalogo"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="TablaCatalogo">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="9" rowCount="0">
+                            <Column editable="true" title="Id_producto" type="java.lang.Object"/>
+                            <Column editable="true" title="Partida" type="java.lang.Object"/>
+                            <Column editable="true" title="Rubro" type="java.lang.Object"/>
+                            <Column editable="true" title="Unidad De Medida" type="java.lang.Object"/>
+                            <Column editable="true" title="Descripcion" type="java.lang.Object"/>
+                            <Column editable="true" title="Marca" type="java.lang.Object"/>
+                            <Column editable="true" title="Cantidad" type="java.lang.Object"/>
+                            <Column editable="true" title="Precio" type="java.lang.Object"/>
+                            <Column editable="true" title="Observacion" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                          <Color id="Cursor Por defecto"/>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TablaCatalogoMouseClicked"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="TablaCatalogo = new javax.swing.JTable(){&#xa;public boolean isCellEditable(int row, int col){&#xa;return false;&#xa;}&#xa;};"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="ScrollProductoIva">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Productos IVA">
+                        <Property name="tabTitle" type="java.lang.String" value="Productos IVA"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="TablaProductoIva">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="5" rowCount="16">
+                            <Column editable="true" title="Id_producto" type="java.lang.Object"/>
+                            <Column editable="true" title="Rubro" type="java.lang.Object"/>
+                            <Column editable="true" title="Descripcion Articulo" type="java.lang.Object"/>
+                            <Column editable="true" title="Marca" type="java.lang.Object"/>
+                            <Column editable="true" title="Cantidad" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="TablaProductoIva = new javax.swing.JTable(){&#xa;public boolean isCellEditable(int row, int col){&#xa;return false;&#xa;}&#xa;};"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JScrollPane" name="ScrollMenuSemanal">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Menu Semanal">
+                        <Property name="tabTitle" type="java.lang.String" value="Menu Semanal"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="TablaMenuSemanal">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="6" rowCount="4">
+                            <Column editable="true" title="Tipo Comida" type="java.lang.Object"/>
+                            <Column editable="true" title="Lunes " type="java.lang.Object"/>
+                            <Column editable="true" title="Martes" type="java.lang.Object"/>
+                            <Column editable="true" title="Miercoles" type="java.lang.Object"/>
+                            <Column editable="true" title="Jueves" type="java.lang.Object"/>
+                            <Column editable="true" title="Viernes" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JProgressBar" name="ProgressBar">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="3"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+                <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                <Property name="stringPainted" type="boolean" value="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f618b24-6bc8-4e63-ae9c-c7475f4731e4">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="Nombres" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+    nombre,
+    Fecha,DATE_FORMAT(Fecha, '%d/%m/%Y'),
+    Puesto,
+    p_incidencia,
+    case 
+        when S_Incidencia is null then 'Normal'
+        else S_Incidencia 
+        end as Segundaincidencia,
+        Justificación
+FROM (
+    SELECT 
+        CASE 
+            WHEN $P{Nombres} = '' THEN nombre
+            WHEN $P{Nombres} != '' AND nombre COLLATE utf8_general_ci LIKE concat($P{Nombres}, '%') THEN nombre
+        END AS nombre, Fecha, Puesto, p_incidencia, S_incidencia, Justificación
+    FROM incidencias_semestre
+    LEFT JOIN horario_semestre e ON idEmpleado = id_Empleado
+    WHERE (justificación IS NULL OR justificación = 'Reporte') 
+        AND ((P_Incidencia != 'Normal'and P_Incidencia !='NT' and S_Incidencia != 'Normal' ) or ((S_Incidencia = 'Normal' or S_Incidencia is null) and P_Incidencia != 'Normal'and P_Incidencia !='NT') or ((P_Incidencia = 'Normal' or P_Incidencia ='NT') and S_Incidencia != 'Normal' ))
+        AND (Fecha BETWEEN str_to_date($P{Fecha1}, '%d/%m/%Y') AND str_to_date($P{Fecha2}, '%d/%m/%Y'))
+) AS Subconsulta
+WHERE nombre IS NOT NULL
+order BY nombre ;]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="Fecha" class="java.time.LocalDateTime">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DATE_FORMAT(Fecha, &apos;%d/%m/%Y&apos;)" class="java.lang.String"/>
+	<field name="Puesto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="p_incidencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Segundaincidencia" class="java.lang.String"/>
+	<field name="Justificación" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="grpNombre">
+		<groupExpression><![CDATA[$F{nombre}]]></groupExpression>
+		<groupHeader>
+			<band height="17">
+				<rectangle>
+					<reportElement x="0" y="0" width="553" height="14" uuid="c4907e56-8301-4ed7-9e99-48eb4d1d35ca"/>
+				</rectangle>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="3" y="0" width="263" height="14" uuid="882079be-e97d-4a7a-b595-c771d1ff6349"/>
+					<textElement>
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="1"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68">
+			<image>
+				<reportElement x="0" y="-1" width="118" height="41" uuid="cd748634-2196-4a8c-9e9d-466cd5689275"/>
+				<imageExpression><![CDATA["C:/Program Files (x86)/Control De Asistencia/img/LogoCbtis.PNG"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="210" y="47" width="100" height="20" uuid="a19defc7-24b0-479a-8059-930e939f445a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INCIDENCIAS]]></text>
+			</staticText>
+			<textField pattern="d/M/yyyy">
+				<reportElement style="Column header" x="0" y="47" width="197" height="20" forecolor="#000000" uuid="7548d1de-e7fa-4ec4-abb0-2a3052707bd4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="47" width="180" height="20" uuid="35c8a444-2ae8-482e-b229-3368c30269fb"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Del " + $P{Fecha1}+ " al " +$P{Fecha2}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="41" width="554" height="1" uuid="59f4b005-99fc-4c79-a099-be7cb0d22c64"/>
+				<graphicElement>
+					<pen lineColor="#333333"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement x="436" y="0" width="120" height="41" uuid="5eae83ca-fccd-4a2a-8f06-e34401e2f025"/>
+				<imageExpression><![CDATA["C:/Program Files (x86)/Control De Asistencia/img/LogoEducacion.PNG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22">
+			<rectangle>
+				<reportElement x="0" y="2" width="553" height="17" uuid="6567318d-c32e-4885-b8f7-7f723c4c87ab"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Column header" x="3" y="4" width="197" height="15" forecolor="#000000" uuid="d5f1881c-e1cf-4f53-8bcc-b0d24bb05527"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="197" y="4" width="69" height="15" forecolor="#000000" uuid="abb2dff6-28eb-48eb-8c2f-e45d2cacfe72"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="266" y="4" width="97" height="15" forecolor="#000000" uuid="9efdc660-b3c7-49ba-ba21-cc6940882146"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[INCIDENCIA 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="363" y="4" width="92" height="15" forecolor="#000000" uuid="eab6073f-6b1c-4bc8-bd74-1973a9ccd983"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[INCIDENCIA 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="455" y="4" width="99" height="15" forecolor="#000000" uuid="2d725bdf-9250-4e00-8d77-704b1f2aead7"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[REPORTE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="2" y="0" width="554" height="15" uuid="81a45597-297c-4a33-ac62-7d6193d76288"/>
+				<rectangle>
+					<reportElement x="197" y="0" width="69" height="15" uuid="970b5e87-8522-4bf0-bf2c-3153b0e2cd2e"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="266" y="0" width="97" height="15" uuid="24f5c178-b74f-4633-93df-d7e2b96b75b5"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="361" y="0" width="92" height="15" uuid="652881b9-8671-4c15-aa28-9ca6a07e0edd"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="453" y="0" width="99" height="15" uuid="5e99bf1b-44ea-4fe5-8ad1-0d6f3b675bee"/>
+				</rectangle>
+				<textField>
+					<reportElement x="455" y="0" width="99" height="15" uuid="ea138322-15f2-49dd-b5fa-2675b113e655"/>
+					<textElement textAlignment="Center">
+						<font fontName="SansSerif" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Justificación} == "Reporte" ? "✔" : "✘"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="266" y="0" width="97" height="15" uuid="0519ccea-e461-4def-b943-04b427287b94"/>
+					<textElement textAlignment="Center">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{p_incidencia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="363" y="0" width="92" height="15" uuid="c51eee31-3b58-4747-abd3-a7ffacdb420e"/>
+					<textElement textAlignment="Center">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Segundaincidencia}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="197" y="0" width="69" height="15" uuid="d77a54fb-f99a-44e8-86f9-0df8c2203e7b"/>
+					<textElement textAlignment="Center">
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{DATE_FORMAT(Fecha, '%d/%m/%Y')}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<rectangle>
+				<reportElement x="0" y="0" width="199" height="15" uuid="62c1e710-0b38-493b-be26-f03a4f928e4e"/>
+			</rectangle>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="516" y="12" width="40" height="20" forecolor="#736343" uuid="2d1eb471-0002-477c-b96a-e6300c5df42b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Column header" x="436" y="12" width="80" height="20" forecolor="#736343" uuid="1fca82f2-adbe-4105-9ad6-481212e2da8d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

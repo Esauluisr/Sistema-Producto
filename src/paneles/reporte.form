@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="pnlPrincipal" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="pnlPrincipal" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="pnlPrincipal">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jPanel7" max="32767" attributes="0"/>
+                      <Component id="ContenedorTitulo" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="ContenedorTitulo" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jPanel7" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="ContenedorTitulo">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="Titulo" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="Titulo" min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace pref="12" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="Titulo">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="NSimSun" size="24" style="1"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Reporte"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel7">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder/>
+              </Border>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="TituloDeLaTabla" alignment="1" max="32767" attributes="0"/>
+                          <Component id="ProgressBar" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="NombreEmpleado" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="ContenedorNombre" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="FechaInicio" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="GenerarReporteIndividual" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="GenerarReportes" min="-2" pref="123" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="GenerarReportesPorEmpleado" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="GenerarReportesDetalle" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="fechainicio" min="-2" pref="130" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="fechafinal" min="-2" pref="121" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Component id="BuscarHistorial" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="FechaFinal" min="-2" pref="121" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="FechaInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="FechaFinal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="NombreEmpleado" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="ContenedorNombre" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="GenerarReporteIndividual" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GenerarReportes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GenerarReportesPorEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="GenerarReportesDetalle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="BuscarHistorial" max="32767" attributes="0"/>
+                          <Component id="fechainicio" alignment="0" max="32767" attributes="0"/>
+                          <Component id="fechafinal" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="TituloDeLaTabla" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ProgressBar" min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="FechaInicio">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="NSimSun" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Fecha Inicial"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FechaFinal">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="NSimSun" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Fecha Final"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="fechainicio">
+            </Component>
+            <Component class="javax.swing.JButton" name="BuscarHistorial">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/buscar.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarHistorialActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JTabbedPane" name="TituloDeLaTabla">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="ContenedorTablaEmpleados">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Reporte">
+                        <Property name="tabTitle" type="java.lang.String" value="Reporte"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ScrollTablaEmpleados" alignment="0" pref="1112" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ScrollTablaEmpleados" alignment="0" pref="328" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JScrollPane" name="ScrollTablaEmpleados">
+                      <AuxValues>
+                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                      </AuxValues>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JTable" name="TablaEmpleados">
+                          <Properties>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                              <Table columnCount="7" rowCount="0">
+                                <Column editable="false" title="Nombre  Del Empleado" type="java.lang.Object"/>
+                                <Column editable="false" title="Fecha" type="java.lang.Object"/>
+                                <Column editable="false" title="Puesto" type="java.lang.Object"/>
+                                <Column editable="false" title="Estado" type="java.lang.Object"/>
+                                <Column editable="false" title="1&#xb0;Incidencia" type="java.lang.Object"/>
+                                <Column editable="false" title="2&#xb0;Incidencia" type="java.lang.Object"/>
+                                <Column editable="false" title="Reporte" type="java.lang.Object"/>
+                              </Table>
+                            </Property>
+                            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                              <TableColumnModel selectionModel="0">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                              </TableColumnModel>
+                            </Property>
+                            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TablaEmpleadosMouseClicked"/>
+                          </Events>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="TablaEmpleados = new javax.swing.JTable(){&#xa;public boolean isCellEditable(int row, int col){&#xa;return false;&#xa;}&#xa;};"/>
+                          </AuxValues>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="NombreEmpleado">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="NSimSun" size="14" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nombre del Empleado "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="ContenedorNombre">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ContenedorNombreMouseClicked"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ContenedorNombreKeyTyped"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="GenerarReporteIndividual">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/report-empleado.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="R.Individual"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GenerarReporteIndividualActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="GenerarReportes">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/portapapeles.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="R.General"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GenerarReportesActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JProgressBar" name="ProgressBar">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="3"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="66" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+                <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                <Property name="stringPainted" type="boolean" value="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="fechafinal">
+            </Component>
+            <Component class="javax.swing.JButton" name="GenerarReportesDetalle">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/grafico.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="D.General"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GenerarReportesDetalleActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="GenerarReportesPorEmpleado">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/reporte.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="D.Individual"/>
+                <Property name="focusPainted" type="boolean" value="false"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GenerarReportesPorEmpleadoActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

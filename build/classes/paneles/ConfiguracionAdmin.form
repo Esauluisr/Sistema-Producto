@@ -1,0 +1,1370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JButton" name="InicioDeSesion4">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d3" green="76" red="19" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="REGISTRA EL DIA INABIL"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Cursor Por defecto"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InicioDeSesion4ActionPerformed"/>
+      </Events>
+    </Component>
+  </NonVisualComponents>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="HoraSemestre" alignment="1" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="HoraSemestre" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="HoraSemestre">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="PanelPrincipal" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="PanelPrincipal" alignment="0" pref="589" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JTabbedPane" name="PanelPrincipal">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="Usuario">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Usuario">
+                    <Property name="tabTitle" type="java.lang.String" value="Usuario"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="PanelUsuario" max="32767" attributes="0"/>
+                              <Component id="ContenedorTitulo5" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ContenedorTitulo5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="PanelUsuario" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="ContenedorTitulo5">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="Titulo5" min="-2" pref="430" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="Titulo5" min="-2" pref="34" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="Titulo5">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="NSimSun" size="24" style="1"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Configuraciones Del Usuario"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JTabbedPane" name="PanelUsuario">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder/>
+                      </Border>
+                    </Property>
+                  </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="NuevoUsuario">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Nuevo Usuario">
+                            <Property name="tabTitle" type="java.lang.String" value="Nuevo Usuario"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jPanel20" min="-2" pref="1035" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel20" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="jPanel20">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="0" red="33" type="rgb"/>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="ContenedorTitulo7" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel12" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                                              <Component id="jLabel6" min="-2" pref="165" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="jPanel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jPanel24" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="jPanel25" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                                              <Component id="jPanel30" min="-2" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="jPanel26" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
+                                                          <Component id="GuardarNuevoUsu1" min="-2" pref="200" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="nombrecompleto" alignment="1" pref="194" max="32767" attributes="0"/>
+                                                      <Component id="idText" alignment="1" pref="194" max="32767" attributes="0"/>
+                                                      <Component id="UsuarioEditar2" alignment="1" pref="194" max="32767" attributes="0"/>
+                                                      <Component id="ComboPrivilegio" max="32767" attributes="0"/>
+                                                      <Component id="txtPasword" alignment="0" pref="194" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="GuardarNuevoUsu" min="-2" pref="200" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="ContenedorTitulo7" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="idText" min="-2" pref="37" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="UsuarioEditar2" min="-2" pref="37" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="txtPasword" max="32767" attributes="0"/>
+                                                          <Component id="jPanel25" max="32767" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="nombrecompleto" min="-2" pref="42" max="-2" attributes="0"/>
+                                                          <Component id="jPanel26" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                      <Component id="jLabel6" min="-2" pref="172" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jPanel30" max="32767" attributes="0"/>
+                                                  <Component id="ComboPrivilegio" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="GuardarNuevoUsu1" min="-2" pref="40" max="-2" attributes="0"/>
+                                                  <Component id="GuardarNuevoUsu" min="-2" pref="40" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jPanel23" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="jPanel24" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                                      <Component id="jLabel12" min="-2" pref="47" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Container class="javax.swing.JPanel" name="ContenedorTitulo7">
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo7" min="-2" pref="1012" max="-2" attributes="0"/>
+                                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo7" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo7">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="1"/>
+                                    </Property>
+                                    <Property name="horizontalAlignment" type="int" value="0"/>
+                                    <Property name="text" type="java.lang.String" value="Nuevo Usuario "/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Component class="javax.swing.JTextField" name="nombrecompleto">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombrecompletoActionPerformed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombrecompletoKeyPressed"/>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombrecompletoKeyTyped"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel6">
+                              <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/img/user.png"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Container class="javax.swing.JPanel" name="jPanel23">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo19" min="-2" pref="59" max="-2" attributes="0"/>
+                                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="Titulo19" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo19">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Id"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="jPanel24">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo20" min="-2" pref="164" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="Titulo20" min="-2" pref="38" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo20">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Usuario"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="jPanel25">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo21" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="57" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo21" min="-2" pref="21" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo21">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="jPanel26">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo22" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo22" min="-2" pref="29" max="-2" attributes="0"/>
+                                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo22">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Nombre completo:"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Component class="javax.swing.JLabel" name="jLabel12">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="________________________________________________________________________________________________________________________________________________________________________________________________________________"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="idText">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idTextActionPerformed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="idTextKeyPressed"/>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="idTextKeyTyped"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="UsuarioEditar2">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UsuarioEditar2ActionPerformed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="UsuarioEditar2KeyPressed"/>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="UsuarioEditar2KeyTyped"/>
+                              </Events>
+                            </Component>
+                            <Container class="javax.swing.JPanel" name="jPanel30">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="Titulo23" min="-2" pref="186" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo23" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo23">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Tipo De Usuario"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Component class="javax.swing.JComboBox" name="ComboPrivilegio">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="0"/>
+                                </Property>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="2">
+                                    <StringItem index="0" value="Usuario"/>
+                                    <StringItem index="1" value="Administrador"/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="txtPasword">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPaswordActionPerformed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPaswordKeyPressed"/>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPaswordKeyTyped"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="GuardarNuevoUsu1">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="d3" green="76" red="19" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/img/nuevo-usuario.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="NUEVO USUARIO"/>
+                                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                  <Color id="Cursor Por defecto"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GuardarNuevoUsu1ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="GuardarNuevoUsu">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="d3" green="76" red="19" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/img/guardar-datos.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="GUARDAR USUARIO"/>
+                                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                  <Color id="Cursor Por defecto"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GuardarNuevoUsuActionPerformed"/>
+                              </Events>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="VerUsuario">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Usuario">
+                            <Property name="tabTitle" type="java.lang.String" value="Usuario"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                                  <Component id="jPanel29" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel29" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="jPanel29">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="ContenedorTitulo11" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="EditarUsuario" min="-2" pref="199" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="EliminarUsuario" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="ContenedorTitulo11" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="EditarUsuario" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="EliminarUsuario" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane2" pref="335" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Container class="javax.swing.JPanel" name="ContenedorTitulo11">
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo11" pref="1021" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo11" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <EmptySpace pref="21" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo11">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="1"/>
+                                    </Property>
+                                    <Property name="horizontalAlignment" type="int" value="0"/>
+                                    <Property name="text" type="java.lang.String" value="Usuarios"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Component class="javax.swing.JButton" name="EliminarUsuario">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="d3" green="76" red="19" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/img/eliminar-usuario.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="ELIMINAR USUARIO"/>
+                                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                  <Color id="Cursor Por defecto"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarUsuarioActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="EditarUsuario">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="d3" green="76" red="19" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/img/editar-usuario.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="EDITAR USUARIO"/>
+                                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                  <Color id="Cursor Por defecto"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditarUsuarioActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                              <AuxValues>
+                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                              </AuxValues>
+
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                              <SubComponents>
+                                <Component class="javax.swing.JTable" name="tUsuarios">
+                                  <Properties>
+                                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                                      <Table columnCount="5" rowCount="4">
+                                        <Column editable="false" title="Id" type="java.lang.Object"/>
+                                        <Column editable="false" title="Usuario" type="java.lang.Object"/>
+                                        <Column editable="false" title="Contrase&#xf1;a" type="java.lang.Object"/>
+                                        <Column editable="false" title="Nombre Completo" type="java.lang.Object"/>
+                                        <Column editable="false" title="Tipo De Usuario" type="java.lang.Object"/>
+                                      </Table>
+                                    </Property>
+                                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                                      <TableColumnModel selectionModel="0">
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                          <Title/>
+                                          <Editor/>
+                                          <Renderer/>
+                                        </Column>
+                                      </TableColumnModel>
+                                    </Property>
+                                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                    </Property>
+                                  </Properties>
+                                  <AuxValues>
+                                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tUsuarios = new javax.swing.JTable(){&#xa;public boolean isCellEditable(int row, int col){&#xa;return false;&#xa;}&#xa;};"/>
+                                  </AuxValues>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                          </SubComponents>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="EditUsurio">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Editar Usuario">
+                            <Property name="tabTitle" type="java.lang.String" value="Editar Usuario"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="1063" max="32767" attributes="0"/>
+                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                                      <Component id="jPanel27" min="-2" pref="1035" max="-2" attributes="0"/>
+                                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="484" max="32767" attributes="0"/>
+                              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jPanel27" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="jPanel27">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                          </Properties>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="ContenedorTitulo10" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jLabel19" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
+                                              <Component id="jLabel8" min="-2" pref="155" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Component id="jPanel36" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jPanel37" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="jPanel38" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                          <Component id="Titulo35" max="32767" attributes="0"/>
+                                                          <Component id="jPanel39" min="-2" pref="204" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="Privilegio2" alignment="0" pref="194" max="32767" attributes="0"/>
+                                                  <Component id="nombrecompleto12" alignment="0" pref="194" max="32767" attributes="0"/>
+                                                  <Component id="usuario23" alignment="0" pref="194" max="32767" attributes="0"/>
+                                                  <Component id="idEditar1" alignment="0" pref="194" max="32767" attributes="0"/>
+                                                  <Component id="contraseña" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="UsuarioEdit" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="499" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="ContenedorTitulo10" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Titulo35" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Component id="jPanel36" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Component id="jPanel37" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                                  <Component id="usuario23" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
+                                                          <Component id="idEditar1" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jPanel38" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="contraseña" min="-2" pref="38" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                                              <Component id="nombrecompleto12" min="-2" pref="42" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" attributes="0">
+                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                              <Component id="jPanel39" min="-2" pref="51" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="jLabel8" min="-2" pref="172" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="Privilegio2" min="-2" pref="33" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="UsuarioEdit" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabel19" min="-2" pref="47" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Container class="javax.swing.JPanel" name="ContenedorTitulo10">
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo10" pref="1062" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo10" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo10">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="1"/>
+                                    </Property>
+                                    <Property name="horizontalAlignment" type="int" value="0"/>
+                                    <Property name="text" type="java.lang.String" value="Editar Usuario"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Component class="javax.swing.JTextField" name="idEditar1">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idEditar1ActionPerformed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="idEditar1KeyPressed"/>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="idEditar1KeyTyped"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="usuario23">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usuario23ActionPerformed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="usuario23KeyPressed"/>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="usuario23KeyTyped"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="nombrecompleto12">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombrecompleto12ActionPerformed"/>
+                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombrecompleto12KeyPressed"/>
+                                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nombrecompleto12KeyTyped"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel8">
+                              <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/img/user.png"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Container class="javax.swing.JPanel" name="jPanel36">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo27" min="-2" pref="59" max="-2" attributes="0"/>
+                                          <EmptySpace pref="35" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="Titulo27" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo27">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Id"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="jPanel37">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo28" min="-2" pref="164" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="Titulo28" min="-2" pref="38" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo28">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Usuario"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="jPanel38">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo29" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="57" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="Titulo29" min="-2" pref="21" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JLabel" name="Titulo29">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="NSimSun" size="24" style="0"/>
+                                    </Property>
+                                    <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
+                            </Container>
+                            <Container class="javax.swing.JPanel" name="jPanel39">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
+
+                              <Layout>
+                                <DimensionLayout dim="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jPanel42" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                                <DimensionLayout dim="1">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jPanel42" min="-2" pref="41" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                </DimensionLayout>
+                              </Layout>
+                              <SubComponents>
+                                <Container class="javax.swing.JPanel" name="jPanel42">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                    </Property>
+                                  </Properties>
+
+                                  <Layout>
+                                    <DimensionLayout dim="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="Titulo34" min="-2" pref="198" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jPanel43" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                    </DimensionLayout>
+                                    <DimensionLayout dim="1">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="Titulo34" min="-2" pref="29" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jPanel43" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                    </DimensionLayout>
+                                  </Layout>
+                                  <SubComponents>
+                                    <Component class="javax.swing.JLabel" name="Titulo34">
+                                      <Properties>
+                                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                          <Font name="NSimSun" size="24" style="0"/>
+                                        </Property>
+                                        <Property name="text" type="java.lang.String" value="Nombre completo:"/>
+                                      </Properties>
+                                    </Component>
+                                    <Container class="javax.swing.JPanel" name="jPanel43">
+                                      <Properties>
+                                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                        </Property>
+                                      </Properties>
+
+                                      <Layout>
+                                        <DimensionLayout dim="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <EmptySpace min="0" pref="204" max="32767" attributes="0"/>
+                                          </Group>
+                                        </DimensionLayout>
+                                        <DimensionLayout dim="1">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
+                                          </Group>
+                                        </DimensionLayout>
+                                      </Layout>
+                                    </Container>
+                                  </SubComponents>
+                                </Container>
+                              </SubComponents>
+                            </Container>
+                            <Component class="javax.swing.JLabel" name="jLabel19">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="________________________________________________________________________________________________________________________________________________________________________________________________________________"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="Titulo35">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="NSimSun" size="24" style="0"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Tipo De usuario"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="Privilegio2">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="0"/>
+                                </Property>
+                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                  <StringArray count="3">
+                                    <StringItem index="0" value="Usuario"/>
+                                    <StringItem index="1" value="Administrador"/>
+                                    <StringItem index="2" value=" "/>
+                                  </StringArray>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="UsuarioEdit">
+                              <Properties>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Segoe UI" size="14" style="1"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="d3" green="76" red="19" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/img/actualizar_usuario.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="ACTUALIZAR USUARIO"/>
+                                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                  <Color id="Cursor Por defecto"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UsuarioEditActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="contrase&#xf1;a">
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contrase&#xf1;aActionPerformed"/>
+                              </Events>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

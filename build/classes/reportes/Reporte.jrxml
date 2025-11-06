@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7fbb404-03d0-4ca8-8fe1-4924f16b77f7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Nombre" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Fecha2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    MAX(d.Nombre_Empleado) AS nombre_director,
+    MAX(s.Nombre_Empleado) as nombre_JEFADELAOFICINADEPERSONAL,
+    e.Nombre_Empleado,
+    e.Puesto,
+    SUBSTRING(i.Fecha, 9, 2) AS Dia,
+    SUBSTRING(i.Fecha, 1, 4) AS Año,
+    CASE
+        WHEN MONTH(Fecha) = '01' THEN 'ENERO'
+        WHEN MONTH(Fecha) = '02' THEN 'FEBRERO'
+        WHEN MONTH(Fecha) = '03' THEN 'MARZO'
+        WHEN MONTH(Fecha) = '04' THEN 'ABRIL'
+        WHEN MONTH(Fecha) = '05' THEN 'MAYO'
+        WHEN MONTH(Fecha) = '06' THEN 'JUNIO'
+        WHEN MONTH(Fecha) = '07' THEN 'JULIO'
+        WHEN MONTH(Fecha) = '08' THEN 'AGOSTO'
+        WHEN MONTH(Fecha) = '09' THEN 'SEPTIEMBRE'
+        WHEN MONTH(Fecha) = '10' THEN 'OCTUBRE'
+        WHEN MONTH(Fecha) = '11' THEN 'NOVIEMBRE'
+        WHEN MONTH(Fecha) = '12' THEN 'DICIEMBRE'
+    END AS Mes,
+    substring(GROUP_CONCAT(
+        CASE
+            WHEN i.Estado IS NULL THEN
+                CASE
+                    WHEN i.P_Incidencia = 'Falta' THEN '(x) Falta'
+                    ELSE '( ) Falta'
+                END
+            ELSE
+CASE 
+					WHEN estado='Entrada' THEN '( ) Falta'
+						ELSE 
+				CASE
+                    WHEN estado='Salida' THEN '( ) Falta'
+						END 
+					END    
+        END
+    ),1,9) AS falta,
+    substring(GROUP_CONCAT(
+        CASE
+			when estado='Entrada' then
+            case
+            WHEN P_Incidencia='Normal' THEN
+                 CONCAT('( ) Retardo de__horas__minutos    ') 
+            ELSE 
+				CASE
+					WHEN SUBSTRING(P_Incidencia, 1, 2) = 'RT' then  CONCAT('(x) Retardo de', SUBSTRING(P_Incidencia, 3, 3), ' horas ', SUBSTRING(P_Incidencia, 7, 8), ' minutos')
+                    else null
+                    end
+            end 
+            else 
+				CASE 
+					WHEN estado is null then '( ) Retardo de__horas__minutos    '
+                    else
+				CASE
+                    WHEN estado='Entrada' THEN '( ) Retardo de__horas__minutos    '
+						ELSE 
+				CASE
+                    WHEN estado='Salida' and (s_incidencia='N.C.E' or s_incidencia='N.C.E')THEN '( ) Retardo de__horas__minutos    '
+						END 
+					END 
+				END
+        END
+    ),1,34) AS Retardo,
+    substring(GROUP_CONCAT(
+        CASE
+			when estado='Salida' then 
+            case
+            WHEN SUBSTRING(P_Incidencia, 1, 5) = 'CH.A' THEN
+                CONCAT('(x) Checó ', SUBSTRING(P_Incidencia, 6, 2), ' horas ', SUBSTRING(P_Incidencia, 9, 11), ' minutos antes de su hora de salida')
+            ELSE CONCAT('( ) Checó__horas__minutos antes de su hora de salida   ')
+            end 
+            else 
+				CASE 
+					WHEN estado is null then '( ) Checó__horas__minutos antes de su hora de salida   '
+                    else 
+						CASE 
+							WHEN estado = 'Entrada'and (S_Incidencia = 'N.C.S' or 'N.C.E') then '( ) Checó__horas__minutos antes de su hora de salida   '
+							else '( ) Checó__horas__minutos antes de su hora de salida   '
+						end
+                    end
+        END
+    ),1,56) AS Horas_Antes,
+    Substring(GROUP_CONCAT(
+        CASE
+			when estado='Salida' then 
+            case
+            WHEN SUBSTRING(S_Incidencia, 1, 5) = 'N.C.E' THEN 'No checó:   Entrada (x)        Salida ( )'
+            ELSE 
+                CASE 
+                    WHEN  SUBSTRING(S_Incidencia, 1, 5) = 'N.C.S' THEN 'No checó:   Entrada ( )        Salida (x)'
+                    ELSE 'No checó:   Entrada ( )        Salida ( )'
+                END
+			end
+            else 
+				case
+					WHEN  SUBSTRING(S_Incidencia, 1, 5) = 'N.C.S' THEN 'No checó:   Entrada ( )        Salida (x)'
+                    ELSE 
+						CASE 
+							WHEN estado is null then 'No checó:   Entrada ( )        Salida ( )'
+								else 'No checó:   Entrada ( )        Salida ( )'
+						end
+                END
+        END
+    ),1,41) AS Chequéo,
+    substring(GROUP_CONCAT(
+        CASE
+            WHEN WEEKDAY(Fecha) = 0 THEN
+                CONCAT(e.Lunes_entrada, ' a ', e.Lunes_salida, ' HRS.')
+            WHEN WEEKDAY(Fecha) = 1 THEN
+                CONCAT(e.Martes_entrada, ' a ', e.Martes_salida, ' HRS.')
+            WHEN WEEKDAY(Fecha) = 2 THEN
+                CONCAT(e.Miercoles_entrada, ' a ', e.Miercoles_salida, ' HRS.')
+            WHEN WEEKDAY(Fecha) = 3 THEN
+                CONCAT( e.Jueves_entrada, ' a ', e.Jueves_salida, ' HRS.')
+            WHEN WEEKDAY(Fecha) = 4 THEN
+                CONCAT( e.Viernes_entrada, ' a ', e.Viernes_salida, ' HRS.')
+            WHEN WEEKDAY(Fecha) = 5 THEN
+                CONCAT( e.Sabado_entrada, ' a ', e.Sabado_salida, ' HRS.')
+            WHEN WEEKDAY(Fecha) = 6 THEN
+                CONCAT( e.Domingo_entrada, ' a ', e.Domingo_salida, ' HRS.')
+        END
+    ),1,17) AS Horario
+FROM
+    incidencias_semestre i
+LEFT JOIN horario_semestre e ON i.IDEmpleado = e.ID_Empleado
+LEFT JOIN horario_semestre d ON d.Puesto = 'Director'
+LEFT JOIN horario_semestre s ON s.Puesto = 'JEFA DE LA OFNA. DE PERSONAL'  -- Agregar un JOIN adicional para obtener al director
+WHERE (i.Justificación IS NULL OR i.Justificación = 'Reporte') 
+    AND ((i.P_Incidencia != 'Normal' AND i.P_Incidencia != 'NT' AND i.S_Incidencia != 'Normal') 
+    OR ((i.S_Incidencia = 'Normal' OR i.S_Incidencia IS NULL) AND i.P_Incidencia != 'Normal' AND i.P_Incidencia != 'NT') 
+    OR ((i.P_Incidencia = 'Normal' OR i.P_Incidencia = 'NT') AND i.S_Incidencia != 'Normal'))
+    AND (Nombre COLLATE utf8_general_ci LIKE concat($P{Nombre},'%')) 
+    AND i.Fecha BETWEEN STR_TO_DATE($P{Fecha1}, '%d/%m/%Y') AND STR_TO_DATE($P{Fecha2}, '%d/%m/%Y')
+GROUP BY e.Nombre_Empleado, i.Fecha, e.Puesto;]]>
+	</queryString>
+	<field name="nombre_director" class="java.lang.String"/>
+	<field name="nombre_JEFADELAOFICINADEPERSONAL" class="java.lang.String"/>
+	<field name="Nombre_Empleado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Puesto" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Dia" class="java.lang.String"/>
+	<field name="Año" class="java.lang.String"/>
+	<field name="Mes" class="java.lang.String"/>
+	<field name="falta" class="java.lang.String"/>
+	<field name="Retardo" class="java.lang.String"/>
+	<field name="Horas_Antes" class="java.lang.String"/>
+	<field name="Chequéo" class="java.lang.String"/>
+	<field name="Horario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="355" y="62" width="132" height="20" uuid="14dcfce2-24dd-4423-ab29-195f15c30f07"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Ocotlán de Morelos, Oax a]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="464" y="62" width="90" height="20" uuid="60d3b5b7-df7d-42a3-b732-945fd9bc1c94"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="89" width="20" height="20" uuid="d37a3bff-a95b-4d0a-a776-b316fee2f27e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="35" y="89" width="204" height="20" uuid="53493702-4f05-4c31-b5e7-46edd7c2039a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre_Empleado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="143" width="356" height="20" uuid="f3eddfb9-27cf-4c6c-a59c-135ef50d04ca"/>
+				<textElement markup="html"/>
+				<textFieldExpression><![CDATA["el día " + "<b>"+ $F{Dia}+ "</b>" + " de " + "<b>" +$F{Mes}+ "</b>" + " de " + "<b>"+$F{Año}+"</b>" + " incurrió en lo siguiente:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="25" y="108" width="535" height="20" uuid="d4e94e47-6495-4a89-b3a4-7bcbc9af1afb"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Se hace de su conocimiento que según los art.24, 25 de los derechos y obligaciones de los trabajadores y el art.80 relativo a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="125" width="535" height="20" uuid="e8cc1a73-3313-4f17-82b0-3fd7e9bfeabc"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[la puntualidad y asistencia, del Reglamento de la Condiciones Generales del trabajo del personal de la SEP, se le reporta que]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="24" y="187" width="334" height="20" uuid="7eea1739-9c92-449b-b3b8-4dcaf53071d7"/>
+				<textFieldExpression><![CDATA[$F{Retardo} == null ? "( ) Retardo de __horas__minutos" : $F{Retardo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="226" width="239" height="20" uuid="575a0226-6cd0-4b3f-a080-4a5a04c362a5"/>
+				<textFieldExpression><![CDATA[$F{Chequéo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="169" width="61" height="20" uuid="ce86462e-7421-40dd-9925-648e4f48dd95"/>
+				<textFieldExpression><![CDATA[$F{falta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="253" width="100" height="20" uuid="4df40baf-437d-4f45-b5ef-a95d9d550264"/>
+				<text><![CDATA[En su horario]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="253" width="91" height="20" uuid="5c26088f-3547-4a30-b08e-ddb0410009a9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Horario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="206" width="341" height="20" uuid="08fc92f1-69f9-4cec-9fba-4de8b2e09988"/>
+				<textFieldExpression><![CDATA[$F{Horas_Antes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="24" y="282" width="533" height="20" uuid="e28018c0-5033-4406-88f6-70ec1b5aa9a9"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Le exhorto al cumplimiento adecuado de sus actividades, recordándole que cuenta con un máximo de 24 horas para entregar ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="299" width="534" height="20" uuid="a42ef83d-710a-4904-ad23-1d71ab64ad7a"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[su justificante en la Oficina de Personal del Plantel.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="309" y="340" width="232" height="20" uuid="1acfb5a4-f2c0-4d0d-bda2-446d5d416a37"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre_Empleado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="358" width="183" height="20" uuid="356d5539-cd06-4a03-b92d-4aee3d911c54"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[JEFE DE LA OFNA. DE PERSONAL ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="360" width="99" height="20" uuid="72d46cae-1b78-4c5a-b5d2-6c5edf037fad"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[DIRECTOR ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="376" width="100" height="12" uuid="9ef7e955-91b5-46fc-8030-580ab144da4f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[C.c.p -Expediente]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="309" y="360" width="232" height="20" uuid="e13b5f02-add8-4208-bd0d-6e0217f94d1f"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Puesto}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="453" y="400" width="13" height="1" uuid="e5759283-3128-419c-9921-be4302674654"/>
+			</line>
+			<line>
+				<reportElement x="237" y="400" width="13" height="1" uuid="d50ee80f-f067-4409-a8ae-2c5146e773ce"/>
+			</line>
+			<line>
+				<reportElement x="363" y="400" width="13" height="1" uuid="7fbe47c8-b154-47ac-8b65-81cbe8933b1f"/>
+			</line>
+			<line>
+				<reportElement x="471" y="400" width="13" height="1" uuid="40103e85-2a7b-474f-b84d-9e3a30173608"/>
+			</line>
+			<line>
+				<reportElement x="327" y="400" width="13" height="1" uuid="6e177045-c77d-4fb4-ab69-ded9047c6a27"/>
+			</line>
+			<line>
+				<reportElement x="381" y="400" width="13" height="1" uuid="0e7be0bc-b6c2-4b88-a7ad-46b59983755f"/>
+			</line>
+			<line>
+				<reportElement x="72" y="400" width="13" height="1" uuid="6ee08c2d-a9d6-49b0-9a7d-b88ad724c6a5"/>
+			</line>
+			<line>
+				<reportElement x="54" y="400" width="13" height="1" uuid="48f73dd7-047e-469c-b72a-77b6f1db152c"/>
+			</line>
+			<line>
+				<reportElement x="345" y="400" width="13" height="1" uuid="6adfd08e-7e5e-4da5-8630-58d053060c52"/>
+			</line>
+			<line>
+				<reportElement x="219" y="400" width="13" height="1" uuid="1268d520-2d9a-4510-b02e-40854b36010f"/>
+			</line>
+			<line>
+				<reportElement x="417" y="400" width="13" height="1" uuid="f36f50da-d5a2-43ea-8ce9-c72300198d52"/>
+			</line>
+			<line>
+				<reportElement x="309" y="400" width="13" height="1" uuid="9ab11135-0371-4e8d-8926-e6dfd494d704"/>
+			</line>
+			<line>
+				<reportElement x="507" y="400" width="13" height="1" uuid="c0fe82fa-1d41-4694-b4cd-14feb7f57e37"/>
+			</line>
+			<line>
+				<reportElement x="399" y="400" width="13" height="1" uuid="424cc584-9eef-47f9-81f9-186df4b0b6d6"/>
+			</line>
+			<line>
+				<reportElement x="144" y="400" width="13" height="1" uuid="0fc9b071-87f3-45ec-b2b9-529a204b533d"/>
+			</line>
+			<line>
+				<reportElement x="273" y="400" width="13" height="1" uuid="4db205a1-d2a3-4500-bc7f-2161f392e4d3"/>
+			</line>
+			<line>
+				<reportElement x="291" y="400" width="13" height="1" uuid="370207af-e5c8-46c9-9a94-63a7d9bf981b"/>
+			</line>
+			<line>
+				<reportElement x="489" y="400" width="13" height="1" uuid="b3483b5f-8f22-4010-b9eb-0e546fd0b1d0"/>
+			</line>
+			<line>
+				<reportElement x="20" y="400" width="13" height="1" uuid="355e397c-bf3a-4a8e-8cbc-a08e7853fb8c"/>
+			</line>
+			<line>
+				<reportElement x="435" y="400" width="13" height="1" uuid="ffbd8b76-e6f2-4f2e-b659-4bca29667748"/>
+			</line>
+			<line>
+				<reportElement x="90" y="400" width="13" height="1" uuid="f011bc0d-e44d-446b-87de-76575c3517d6"/>
+			</line>
+			<line>
+				<reportElement x="182" y="400" width="13" height="1" uuid="6bfce1af-390c-49c1-8e20-693e01628abd"/>
+			</line>
+			<line>
+				<reportElement x="255" y="400" width="13" height="1" uuid="0cf2ac3f-29f9-4448-b0dd-4044f6bcb79e"/>
+			</line>
+			<line>
+				<reportElement x="163" y="400" width="13" height="1" uuid="eb94b76d-7cd4-4049-8fb9-a37409284102"/>
+			</line>
+			<line>
+				<reportElement x="200" y="400" width="13" height="1" uuid="13cdc79f-4819-4c80-a41e-b140c702c72b"/>
+			</line>
+			<line>
+				<reportElement x="108" y="400" width="13" height="1" uuid="76dcb896-f900-4cfd-8c1e-ccf28898a719"/>
+			</line>
+			<line>
+				<reportElement x="37" y="400" width="13" height="1" uuid="d97a1683-f3e5-4c28-8a67-5a5bc867dc25"/>
+			</line>
+			<line>
+				<reportElement x="126" y="400" width="13" height="1" uuid="fda79253-9fe5-410e-b4ee-ab613e6b432e"/>
+			</line>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="464" y="412" width="90" height="20" uuid="ff13ea49-bb53-4a48-9e42-3a371f19d473"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="355" y="412" width="132" height="20" uuid="90f69f70-f575-40ee-ab01-e74299518e8d"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Ocotlán de Morelos, Oax a]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="38" y="437" width="211" height="20" uuid="51125fae-99ae-4665-a79d-d3e2371a9a43"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre_Empleado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="458" width="535" height="20" uuid="b71e2834-c73d-4271-b05e-9d30136bc466"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Se hace de su conocimiento que según los art.24, 25 de los derechos y obligaciones de los trabajadores y el art.80 relativo a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="437" width="20" height="20" uuid="b9e72e63-8a5c-4359-9658-4ac0356c030d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[C.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="26" y="491" width="356" height="20" uuid="60473630-9fc3-466f-a9f3-f3ce5dd434b2"/>
+				<textElement markup="html"/>
+				<textFieldExpression><![CDATA["el día "+"<b>"+$F{Dia}+"</b>" + " de " + "<b>"+$F{Mes}+"</b>" + " de " + "<b>" +$F{Año}+"</b>" + " incurrió en lo siguiente:"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="474" width="538" height="20" uuid="2f9e9ce0-c9c5-4c01-9752-604089056334"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[la puntualidad y asistencia, del Reglamento de la Condiciones Generales del trabajo del personal de la SEP, se le reporta que]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="25" y="560" width="342" height="20" uuid="7e5a86f7-089f-45ca-887e-854194ff3359"/>
+				<textFieldExpression><![CDATA[$F{Horas_Antes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="27" y="610" width="100" height="20" uuid="2e0351fd-3888-4d79-8f4b-aebb8c2636f5"/>
+				<text><![CDATA[En su horario]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="89" y="610" width="89" height="20" uuid="1ba75e3c-9cb6-43e6-9744-400187169e2d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Horario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="25" y="526" width="241" height="20" uuid="2f7d2f38-32bc-463a-a9ef-6b393c87e88e"/>
+				<textFieldExpression><![CDATA[$F{falta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="580" width="239" height="20" uuid="4a4c2f14-67d5-482e-a843-87ebe90f9738"/>
+				<textFieldExpression><![CDATA[$F{Chequéo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="745" width="100" height="12" uuid="ab0d05b1-9255-4ef2-b112-37035f443150"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[C.c.p -Expediente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="641" width="531" height="20" uuid="69d028a2-c3ed-4610-97ac-8b326616bb34"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Le exhorto al cumplimiento adecuado de sus actividades, recordándole que cuenta con un máximo de 24 horas para entregar ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="324" y="725" width="219" height="20" uuid="be03190d-ac8c-4d36-9701-57f615f1a0f9"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Puesto}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="705" width="230" height="20" uuid="a36f49ec-a2f2-40c7-a432-2389ea2a6bf1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nombre_Empleado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="19" y="725" width="183" height="20" uuid="10f04716-4e05-4a88-bcf9-63486306f54a"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[JEFE DE LA OFNA. DE PERSONAL ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="658" width="530" height="20" uuid="29b22c32-c765-4b89-af80-d21ce42985f0"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[su justificante en la Oficina de Personal del Plantel.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="725" width="100" height="20" uuid="710dc266-1f31-42a4-8561-f0c7ea90937c"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[DIRECTOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="25" y="543" width="334" height="20" uuid="f4aa9854-8490-4b65-b96e-63fa40cf63f3"/>
+				<textFieldExpression><![CDATA[$F{Retardo} == null ? "( ) Retardo de __horas__minutos" : $F{Retardo}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="340" y="3" width="195" height="40" uuid="e5933eb8-2ccb-4b28-ada0-e7037fab31c7"/>
+				<imageExpression><![CDATA["C:/Program Files (x86)/Control De Asistencia/img/logo.PNG"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="195" y="3" width="127" height="40" uuid="8b499861-3bcd-48e9-b250-5374cbc950dc"/>
+				<imageExpression><![CDATA["C:/Program Files (x86)/Control De Asistencia/img/LogoCbtis.PNG"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="185" y="340" width="124" height="20" uuid="82f02cc6-4acc-4dba-b3a4-d0c595b307a5"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_director}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="44" y="705" width="124" height="20" uuid="8628c5db-f46d-4f4d-8b30-400a0b02ed8b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombre_JEFADELAOFICINADEPERSONAL}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="44" y="338" width="124" height="20" uuid="5880fe81-dbf3-4261-bad4-3748d3c01e81"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombre_JEFADELAOFICINADEPERSONAL}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="705" width="124" height="20" uuid="a83e427a-cce0-45f3-a552-4fed99d424bf"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_director}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="18" y="3" width="138" height="59" uuid="264c1862-b2d8-46b1-ba4f-a97c2725382f"/>
+				<imageExpression><![CDATA["C:/Program Files (x86)/Control De Asistencia/img/LogoEducacion.PNG"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>
