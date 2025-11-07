@@ -1,8 +1,6 @@
 package paneles;
 
 import Conexion.conexion;
-import Entidades.Ciclo_Escolar;
-import Modelo.ModeloCiclo_Escolar;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
@@ -62,14 +60,9 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         tUsuarios.getTableHeader().setOpaque(false);
         tUsuarios.setRowHeight(25);
 
-        mostrarHorario();
-        showsemestres();
         MostarDatos();
-        llenarconfiguracion();
         limpiarcajas();
         bloquearNuevoUsuario();
-        mostrardiasinhabiles();
-        llenarCiclos();
         //bloquearEditUsuario();
         PanelUsuario.setEnabledAt(2, false);
     }
@@ -85,7 +78,6 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
 
         InicioDeSesion4 = new javax.swing.JButton();
         HoraSemestre = new javax.swing.JPanel();
-        PanelPrincipal = new javax.swing.JTabbedPane();
         Usuario = new javax.swing.JPanel();
         ContenedorTitulo5 = new javax.swing.JPanel();
         Titulo5 = new javax.swing.JLabel();
@@ -94,25 +86,17 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         jPanel20 = new javax.swing.JPanel();
         ContenedorTitulo7 = new javax.swing.JPanel();
         Titulo7 = new javax.swing.JLabel();
-        nombrecompleto = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
-        Titulo19 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
-        Titulo20 = new javax.swing.JLabel();
-        jPanel25 = new javax.swing.JPanel();
         Titulo21 = new javax.swing.JLabel();
-        jPanel26 = new javax.swing.JPanel();
-        Titulo22 = new javax.swing.JLabel();
+        jPanel25 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        idText = new javax.swing.JTextField();
-        UsuarioEditar2 = new javax.swing.JTextField();
-        jPanel30 = new javax.swing.JPanel();
-        Titulo23 = new javax.swing.JLabel();
-        ComboPrivilegio = new javax.swing.JComboBox<>();
-        txtPasword = new javax.swing.JTextField();
+        Usuario2 = new javax.swing.JTextField();
+        ContraseñaNueva = new javax.swing.JTextField();
         GuardarNuevoUsu1 = new javax.swing.JButton();
         GuardarNuevoUsu = new javax.swing.JButton();
+        Titulo20 = new javax.swing.JLabel();
         VerUsuario = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         ContenedorTitulo11 = new javax.swing.JPanel();
@@ -125,25 +109,18 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         jPanel27 = new javax.swing.JPanel();
         ContenedorTitulo10 = new javax.swing.JPanel();
         Titulo10 = new javax.swing.JLabel();
-        idEditar1 = new javax.swing.JTextField();
-        usuario23 = new javax.swing.JTextField();
-        nombrecompleto12 = new javax.swing.JTextField();
+        usuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jPanel36 = new javax.swing.JPanel();
-        Titulo27 = new javax.swing.JLabel();
         jPanel37 = new javax.swing.JPanel();
         Titulo28 = new javax.swing.JLabel();
         jPanel38 = new javax.swing.JPanel();
         Titulo29 = new javax.swing.JLabel();
-        jPanel39 = new javax.swing.JPanel();
-        jPanel42 = new javax.swing.JPanel();
-        Titulo34 = new javax.swing.JLabel();
-        jPanel43 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        Titulo35 = new javax.swing.JLabel();
-        Privilegio2 = new javax.swing.JComboBox<>();
-        UsuarioEdit = new javax.swing.JButton();
+        ActualizarUsuario = new javax.swing.JButton();
         contraseña = new javax.swing.JTextField();
+        idEditar1 = new javax.swing.JTextField();
+        jPanel36 = new javax.swing.JPanel();
+        Titulo27 = new javax.swing.JLabel();
 
         InicioDeSesion4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         InicioDeSesion4.setForeground(new java.awt.Color(25, 118, 211));
@@ -157,24 +134,23 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
 
         HoraSemestre.setBackground(new java.awt.Color(255, 255, 255));
 
-        PanelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-
         Usuario.setBackground(new java.awt.Color(255, 255, 255));
 
         ContenedorTitulo5.setBackground(new java.awt.Color(255, 255, 255));
         ContenedorTitulo5.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         Titulo5.setFont(new java.awt.Font("NSimSun", 1, 24)); // NOI18N
+        Titulo5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo5.setText("Configuraciones Del Usuario");
 
         javax.swing.GroupLayout ContenedorTitulo5Layout = new javax.swing.GroupLayout(ContenedorTitulo5);
         ContenedorTitulo5.setLayout(ContenedorTitulo5Layout);
         ContenedorTitulo5Layout.setHorizontalGroup(
             ContenedorTitulo5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ContenedorTitulo5Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(Titulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorTitulo5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Titulo5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         ContenedorTitulo5Layout.setVerticalGroup(
             ContenedorTitulo5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,47 +188,25 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        nombrecompleto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombrecompletoActionPerformed(evt);
-            }
-        });
-        nombrecompleto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                nombrecompletoKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nombrecompletoKeyTyped(evt);
-            }
-        });
-
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
 
         jPanel23.setBackground(new java.awt.Color(255, 255, 255));
-
-        Titulo19.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
-        Titulo19.setText("Id");
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo19, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addGap(0, 100, Short.MAX_VALUE)
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addComponent(Titulo19, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 34, Short.MAX_VALUE)
         );
 
         jPanel24.setBackground(new java.awt.Color(255, 255, 255));
 
-        Titulo20.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
-        Titulo20.setText("Usuario");
+        Titulo21.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
+        Titulo21.setText("Contraseña:");
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -260,127 +214,58 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Titulo20, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Titulo21)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addComponent(Titulo20, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
+                .addGap(0, 13, Short.MAX_VALUE)
+                .addComponent(Titulo21, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel25.setBackground(new java.awt.Color(255, 255, 255));
-
-        Titulo21.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
-        Titulo21.setText("Contraseña:");
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo21)
-                .addContainerGap(57, Short.MAX_VALUE))
+            .addGap(0, 195, Short.MAX_VALUE)
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo21, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel26.setBackground(new java.awt.Color(255, 255, 255));
-
-        Titulo22.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
-        Titulo22.setText("Nombre completo:");
-
-        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
-        jPanel26.setLayout(jPanel26Layout);
-        jPanel26Layout.setHorizontalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo22)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel26Layout.setVerticalGroup(
-            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel26Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo22, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+            .addGap(0, 33, Short.MAX_VALUE)
         );
 
         jLabel12.setBackground(new java.awt.Color(0, 0, 0));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("________________________________________________________________________________________________________________________________________________________________________________________________________________");
 
-        idText.addActionListener(new java.awt.event.ActionListener() {
+        Usuario2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idTextActionPerformed(evt);
+                Usuario2ActionPerformed(evt);
             }
         });
-        idText.addKeyListener(new java.awt.event.KeyAdapter() {
+        Usuario2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                idTextKeyPressed(evt);
+                Usuario2KeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                idTextKeyTyped(evt);
+                Usuario2KeyTyped(evt);
             }
         });
 
-        UsuarioEditar2.addActionListener(new java.awt.event.ActionListener() {
+        ContraseñaNueva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuarioEditar2ActionPerformed(evt);
+                ContraseñaNuevaActionPerformed(evt);
             }
         });
-        UsuarioEditar2.addKeyListener(new java.awt.event.KeyAdapter() {
+        ContraseñaNueva.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                UsuarioEditar2KeyPressed(evt);
+                ContraseñaNuevaKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                UsuarioEditar2KeyTyped(evt);
-            }
-        });
-
-        jPanel30.setBackground(new java.awt.Color(255, 255, 255));
-
-        Titulo23.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
-        Titulo23.setText("Tipo De Usuario");
-
-        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
-        jPanel30.setLayout(jPanel30Layout);
-        jPanel30Layout.setHorizontalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addComponent(Titulo23, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
-        );
-        jPanel30Layout.setVerticalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo23)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        ComboPrivilegio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ComboPrivilegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Administrador" }));
-
-        txtPasword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPaswordActionPerformed(evt);
-            }
-        });
-        txtPasword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtPaswordKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPaswordKeyTyped(evt);
+                ContraseñaNuevaKeyTyped(evt);
             }
         });
 
@@ -406,6 +291,9 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
             }
         });
 
+        Titulo20.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
+        Titulo20.setText("Usuario");
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
@@ -421,32 +309,26 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addGap(175, 175, 175)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(167, 167, 167)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGap(167, 167, 167)
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel20Layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel20Layout.createSequentialGroup()
-                                    .addGap(173, 173, 173)
-                                    .addComponent(GuardarNuevoUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGap(6, 6, 6)
+                                .addComponent(Titulo20, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nombrecompleto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                                .addComponent(idText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                                .addComponent(UsuarioEditar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                                .addComponent(ComboPrivilegio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtPasword, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
-                            .addComponent(GuardarNuevoUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Usuario2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(ContraseñaNueva, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(GuardarNuevoUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(GuardarNuevoUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(238, 238, 238))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,35 +337,26 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(UsuarioEditar2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPasword)
-                                    .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(23, 23, 23)
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nombrecompleto, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ComboPrivilegio))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(GuardarNuevoUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(GuardarNuevoUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ContraseñaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel20Layout.createSequentialGroup()
                         .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Titulo20, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Usuario2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GuardarNuevoUsu1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(GuardarNuevoUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -560,17 +433,17 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         };
         tUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Id", "Usuario", "Contraseña", "Nombre Completo", "Tipo De Usuario"
+                "Id", "Usuario", "Contraseña"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -582,8 +455,6 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
             tUsuarios.getColumnModel().getColumn(0).setResizable(false);
             tUsuarios.getColumnModel().getColumn(1).setResizable(false);
             tUsuarios.getColumnModel().getColumn(2).setResizable(false);
-            tUsuarios.getColumnModel().getColumn(3).setResizable(false);
-            tUsuarios.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
@@ -610,7 +481,7 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
                     .addComponent(EditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout VerUsuarioLayout = new javax.swing.GroupLayout(VerUsuario);
@@ -618,9 +489,9 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         VerUsuarioLayout.setHorizontalGroup(
             VerUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VerUsuarioLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         VerUsuarioLayout.setVerticalGroup(
             VerUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -635,6 +506,8 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         EditUsurio.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel27.setBackground(new java.awt.Color(255, 255, 255));
+
+        ContenedorTitulo10.setBackground(new java.awt.Color(255, 255, 255));
 
         Titulo10.setFont(new java.awt.Font("NSimSun", 1, 24)); // NOI18N
         Titulo10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -653,74 +526,25 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
             ContenedorTitulo10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContenedorTitulo10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Titulo10, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(Titulo10)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        idEditar1.addActionListener(new java.awt.event.ActionListener() {
+        usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idEditar1ActionPerformed(evt);
+                usuarioActionPerformed(evt);
             }
         });
-        idEditar1.addKeyListener(new java.awt.event.KeyAdapter() {
+        usuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                idEditar1KeyPressed(evt);
+                usuarioKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                idEditar1KeyTyped(evt);
-            }
-        });
-
-        usuario23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuario23ActionPerformed(evt);
-            }
-        });
-        usuario23.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                usuario23KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                usuario23KeyTyped(evt);
-            }
-        });
-
-        nombrecompleto12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombrecompleto12ActionPerformed(evt);
-            }
-        });
-        nombrecompleto12.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                nombrecompleto12KeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nombrecompleto12KeyTyped(evt);
+                usuarioKeyTyped(evt);
             }
         });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
-
-        jPanel36.setBackground(new java.awt.Color(255, 255, 255));
-
-        Titulo27.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
-        Titulo27.setText("Id");
-
-        javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
-        jPanel36.setLayout(jPanel36Layout);
-        jPanel36Layout.setHorizontalGroup(
-            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel36Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo27, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        jPanel36Layout.setVerticalGroup(
-            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel36Layout.createSequentialGroup()
-                .addComponent(Titulo27, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
 
         jPanel37.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -765,87 +589,18 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel39.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel42.setBackground(new java.awt.Color(255, 255, 255));
-
-        Titulo34.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
-        Titulo34.setText("Nombre completo:");
-
-        jPanel43.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
-        jPanel43.setLayout(jPanel43Layout);
-        jPanel43Layout.setHorizontalGroup(
-            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 204, Short.MAX_VALUE)
-        );
-        jPanel43Layout.setVerticalGroup(
-            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 47, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
-        jPanel42.setLayout(jPanel42Layout);
-        jPanel42Layout.setHorizontalGroup(
-            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel42Layout.createSequentialGroup()
-                .addComponent(Titulo34, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 26, Short.MAX_VALUE))
-            .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel42Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        jPanel42Layout.setVerticalGroup(
-            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel42Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo34, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel42Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-
-        javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
-        jPanel39.setLayout(jPanel39Layout);
-        jPanel39Layout.setHorizontalGroup(
-            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel39Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel39Layout.setVerticalGroup(
-            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel39Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         jLabel19.setBackground(new java.awt.Color(0, 0, 0));
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel19.setText("________________________________________________________________________________________________________________________________________________________________________________________________________________");
 
-        Titulo35.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
-        Titulo35.setText("Tipo De usuario");
-
-        Privilegio2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Privilegio2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuario", "Administrador", " " }));
-
-        UsuarioEdit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        UsuarioEdit.setForeground(new java.awt.Color(25, 118, 211));
-        UsuarioEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/actualizar_usuario.png"))); // NOI18N
-        UsuarioEdit.setText("ACTUALIZAR USUARIO");
-        UsuarioEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        UsuarioEdit.addActionListener(new java.awt.event.ActionListener() {
+        ActualizarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ActualizarUsuario.setForeground(new java.awt.Color(25, 118, 211));
+        ActualizarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/actualizar_usuario.png"))); // NOI18N
+        ActualizarUsuario.setText("ACTUALIZAR USUARIO");
+        ActualizarUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ActualizarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuarioEditActionPerformed(evt);
+                ActualizarUsuarioActionPerformed(evt);
             }
         });
 
@@ -854,6 +609,36 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
                 contraseñaActionPerformed(evt);
             }
         });
+
+        idEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idEditar1ActionPerformed(evt);
+            }
+        });
+        idEditar1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                idEditar1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idEditar1KeyTyped(evt);
+            }
+        });
+
+        jPanel36.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
+        jPanel36.setLayout(jPanel36Layout);
+        jPanel36Layout.setHorizontalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel36Layout.setVerticalGroup(
+            jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 34, Short.MAX_VALUE)
+        );
+
+        Titulo27.setFont(new java.awt.Font("NSimSun", 0, 24)); // NOI18N
+        Titulo27.setText("Id");
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -868,88 +653,79 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel27Layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
+                        .addGap(140, 140, 140)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116)
+                        .addGap(145, 145, 145)
                         .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel27Layout.createSequentialGroup()
-                                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(27, 27, 27))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
-                                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(Titulo35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)))
+                            .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Titulo27, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Privilegio2, 0, 194, Short.MAX_VALUE)
-                            .addComponent(nombrecompleto12, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(usuario23, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(idEditar1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(contraseña))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(UsuarioEdit)
-                        .addGap(499, 499, 499)))
+                            .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(contraseña)
+                            .addComponent(idEditar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(ActualizarUsuario)
+                .addGap(416, 416, 416))
+            .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel27Layout.createSequentialGroup()
+                    .addGap(538, 538, 538)
+                    .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(539, Short.MAX_VALUE)))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addComponent(ContenedorTitulo10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
                 .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Titulo35, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel27Layout.createSequentialGroup()
-                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(idEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Titulo27, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel27Layout.createSequentialGroup()
-                                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel27Layout.createSequentialGroup()
-                                        .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(usuario23, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(idEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel27Layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(nombrecompleto12, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel27Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jPanel39, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(17, 17, 17))
-                            .addGroup(jPanel27Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19)))
-                        .addComponent(Privilegio2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(UsuarioEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(5, 5, 5)
+                                .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel27Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25)
+                .addComponent(ActualizarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel27Layout.createSequentialGroup()
+                    .addGap(221, 221, 221)
+                    .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(222, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout EditUsurioLayout = new javax.swing.GroupLayout(EditUsurio);
         EditUsurio.setLayout(EditUsurioLayout);
         EditUsurioLayout.setHorizontalGroup(
             EditUsurioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1063, Short.MAX_VALUE)
+            .addGap(0, 1103, Short.MAX_VALUE)
             .addGroup(EditUsurioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditUsurioLayout.createSequentialGroup()
-                    .addContainerGap(14, Short.MAX_VALUE)
+                    .addContainerGap(34, Short.MAX_VALUE)
                     .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, 1035, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(14, Short.MAX_VALUE)))
+                    .addContainerGap(34, Short.MAX_VALUE)))
         );
         EditUsurioLayout.setVerticalGroup(
             EditUsurioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 484, Short.MAX_VALUE)
+            .addGap(0, 489, Short.MAX_VALUE)
             .addGroup(EditUsurioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(EditUsurioLayout.createSequentialGroup()
                     .addContainerGap()
@@ -980,20 +756,15 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        PanelPrincipal.addTab("Usuario", Usuario);
-
         javax.swing.GroupLayout HoraSemestreLayout = new javax.swing.GroupLayout(HoraSemestre);
         HoraSemestre.setLayout(HoraSemestreLayout);
         HoraSemestreLayout.setHorizontalGroup(
             HoraSemestreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HoraSemestreLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PanelPrincipal)
-                .addContainerGap())
+            .addComponent(Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         HoraSemestreLayout.setVerticalGroup(
             HoraSemestreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 589, Short.MAX_VALUE)
+            .addComponent(Usuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -1008,570 +779,25 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void filtrar() {
-        try {
-           
-
-        } catch (Exception ex) {
-
-        }
-
-    }    private void showsemestres() {
-        conexion conn = new conexion();
-        Connection con = conn.Conectar();
-        PreparedStatement ciclo = null;
-        try {
-            ciclo = con.prepareStatement("select max(CicloEscolar) as Ciclo from incidencias_semestre");
-            ResultSet Ciclo = ciclo.executeQuery();
-            if (Ciclo.next()) {
-                String p = Ciclo.getString("Ciclo");
-                mostrarHorarios(p);
-            }
-        } catch (Exception e) {
-            //System.err.println(e);
-        }
-    }    private void llenarCiclos() {
-        ModeloCiclo_Escolar modCiclos = new ModeloCiclo_Escolar();
-        ArrayList<Ciclo_Escolar> Ciclos = modCiclos.getCiclo_Escolar();
-
-
-        int i;
-    }
-
     private void limpiarcajas() {
-        idText.setText(null);
-        UsuarioEditar2.setText(null);
-        txtPasword.setText(null);
-        nombrecompleto.setText(null);
+        Usuario2.setText(null);
+        ContraseñaNueva.setText(null);
 
     }
 
-    void bloquearNuevoUsuario() {
-        idText.setEnabled(false);
-        UsuarioEditar2.setEnabled(false);
-        txtPasword.setEnabled(false);
-        nombrecompleto.setEnabled(false);
-        ComboPrivilegio.setEnabled(false);
+    void bloquearNuevoUsuario() {;
+        Usuario2.setEnabled(false);
+        ContraseñaNueva.setEnabled(false);
         GuardarNuevoUsu.setEnabled(false);
+        idEditar1.setEnabled(false);
     }
 
     void desbloquarNuevoUsuario() {
-        idText.setEnabled(true);
-        UsuarioEditar2.setEnabled(true);
-        txtPasword.setEnabled(true);
-        nombrecompleto.setEnabled(true);
-        ComboPrivilegio.setEnabled(true);
+        Usuario2.setEnabled(true);
+        ContraseñaNueva.setEnabled(true);
         GuardarNuevoUsu.setEnabled(true);
     }
 
-    public static void pb() {
-
-        Thread hilos = new Thread() {
-            public void run() {
-
-                for (int a = 0; a <= 100; a++) {
-                    try {
-                        ProgressBar.setValue(a);
-                        Thread.sleep(4);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
-
-                    }
-
-                }
-            }
-
-        };
-
-        hilos.start();
-
-    }
-
-    public void mostrardiasinhabiles() {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        conexion conn = new conexion();
-        Connection con = conn.Conectar();
-        try {
-            DefaultTableModel modelo = new DefaultTableModel() {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false; // Hacer que todas las celdas no sean editables
-                }
-            };
-            sorter = new TableRowSorter<>(modelo);
-
-            String sql = " SELECT * FROM dias_inhabiles;";
-
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-
-            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
-            int cantidadColumnas = rsMd.getColumnCount();
-
-            modelo.addColumn("Fecha_inhabil");
-            modelo.addColumn("Motivo");
-
-            while (rs.next()) {
-                Object[] filas = new Object[cantidadColumnas];
-                for (int i = 0; i < cantidadColumnas; i++) {
-                    filas[i] = rs.getObject(i + 1);
-                }
-                modelo.addRow(filas);
-            }
-
-        } catch (SQLException ex) {
-            //System.err.println(ex.toString());
-        } finally {
-            try {
-                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
-
-    public void mostrarHorario() {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        conexion conn = new conexion();
-        Connection con = conn.Conectar();
-        try {
-            DefaultTableModel modelo = new DefaultTableModel() {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    // Especifica las columnas que deseas bloquear (por ejemplo, columnas 0,2,3 y 4)
-                    return column != 0 && column != 1 && column != 2 && column != 3 && column != 4;
-                }
-            };
-            sorter = new TableRowSorter<>(modelo);
-
-            String sql = " SELECT substring(ciclo_escolar,1,12) as Ciclo_escolar,id_empleado,nombre_empleado,puesto,Numero_Tarjeta,lunes_entrada,Lunes_Salida,Martes_Entrada,Martes_Salida,Miercoles_Entrada,Miercoles_Salida,Jueves_Entrada,\n"
-                    + "Jueves_Salida,Viernes_Entrada,Viernes_Salida,Sabado_Entrada,Sabado_Salida,Domingo_Entrada,Domingo_Salida\n"
-                    + " FROM horario_semestre";
-
-            ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-
-            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
-            int cantidadColumnas = rsMd.getColumnCount();
-
-            modelo.addColumn("Ciclo Escolar");
-            modelo.addColumn("Id Empleado");
-            modelo.addColumn("Nombre Del Empleado");
-            modelo.addColumn("Puesto");
-            modelo.addColumn("Numero De Tarjeta");
-            modelo.addColumn("Lunes Entrada");
-            modelo.addColumn("Lunes Salida");
-
-            modelo.addColumn("Martes Entrada");
-            modelo.addColumn("Martes Salida");
-
-            modelo.addColumn("Miercoles Entrada");
-            modelo.addColumn("Miercoles Salida");
-
-            modelo.addColumn("Jueves Entrada");
-            modelo.addColumn("Jueves Salida");
-
-            modelo.addColumn("Viernes Entrada");
-            modelo.addColumn("Viernes Salida");
-
-            modelo.addColumn("Sabado Entrada");
-            modelo.addColumn("Sabado Salida");
-
-            modelo.addColumn("Domingo Entrada");
-            modelo.addColumn("Domingo Salida");
-            /* centrar datos */
-            DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
-            ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
-
-            while (rs.next()) {
-                Object[] filas = new Object[cantidadColumnas];
-                for (int i = 0; i < cantidadColumnas; i++) {
-                    filas[i] = rs.getObject(i + 1);
-                }
-                modelo.addRow(filas);
-            }
-
-        } catch (SQLException ex) {
-            //System.err.println(ex.toString());
-        } finally {
-            try {
-                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-    }
-
-    public void llenarconfiguracion() {
-        conexion conn = new conexion();
-        Connection con = conn.Conectar();
-        PreparedStatement ps = null, ps2 = null;
-
-        try {
-            String sql = "select Pase_entrada,Pase_salida FROM configuración";
-            ps = con.prepareStatement(sql);
-            ResultSet resultado = ps.executeQuery();
-            if (resultado.next()) {
-                int valor = resultado.getInt("Pase_entrada");
-                int valor2 = resultado.getInt("Pase_salida");
-                String valorE = Integer.toString(valor);
-                String valorS = Integer.toString(valor2);
-            }
-        } catch (SQLException ex) {
-            //System.err.print(ex.toString());
-        }
-        try {
-            String sql2 = "select permisos_economicos FROM configuración";
-            ps2 = con.prepareStatement(sql2);
-            ResultSet resultado2 = ps2.executeQuery();
-            if (resultado2.next()) {
-                int valor2 = resultado2.getInt("permisos_economicos");
-                String valorS2 = Integer.toString(valor2);
-            }
-        } catch (SQLException ex) {
-            //System.err.print(ex.toString());
-        }
-
-    }
-
-    public void mostrarHorarios(String p1) {
-        PreparedStatement ps = null, ciclo = null;
-        ResultSet rs = null;
-        conexion conn = new conexion();
-        Connection con = conn.Conectar();
-        try {
-            DefaultTableModel modelo = new DefaultTableModel() {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false; // Hacer que todas las celdas no sean editables
-                }
-            };
-            sorter = new TableRowSorter<>(modelo);
-
-            String sql = " SELECT Horario, substring(ciclo_escolar,1,12) as Ciclo_escolar,id_empleado,nombre_empleado,puesto,Numero_Tarjeta,lunes_entrada,Lunes_Salida,Martes_Entrada,Martes_Salida,Miercoles_Entrada,Miercoles_Salida,Jueves_Entrada,\n"
-                    + "Jueves_Salida,Viernes_Entrada,Viernes_Salida,Sabado_Entrada,Sabado_Salida,Domingo_Entrada,Domingo_Salida\n"
-                    + " FROM semestres where substring(ciclo_escolar,1,12)=? order by id_empleado";
-
-            ps = con.prepareStatement(sql);
-            ps.setString(1, p1);
-            rs = ps.executeQuery();
-
-            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
-            int cantidadColumnas = rsMd.getColumnCount();
-
-            modelo.addColumn("Horario");
-            modelo.addColumn("Ciclo Escolar");
-            modelo.addColumn("Id Empleado");
-            modelo.addColumn("Nombre Del Empleado ");
-            modelo.addColumn("Puesto");
-            modelo.addColumn("Numero De Tarjeta");
-            modelo.addColumn("Lunes Entrada");
-            modelo.addColumn("Lunes Salida");
-
-            modelo.addColumn("Martes Entrada");
-            modelo.addColumn("Martes Salida");
-
-            modelo.addColumn("Miercoles Entrada");
-            modelo.addColumn("Miercoles Salida");
-
-            modelo.addColumn("Jueves Entrada");
-            modelo.addColumn("Jueves Salida");
-
-            modelo.addColumn("Viernes Entrada");
-            modelo.addColumn("Viernes Salida");
-
-            modelo.addColumn("Sabado Entrada");
-            modelo.addColumn("Sabado Salida");
-
-            modelo.addColumn("Domingo Entrada");
-            modelo.addColumn("Domingo Salida");
-
-            /* centrar datos */
-            DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
-            ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
-
-            while (rs.next()) {
-                Object[] filas = new Object[cantidadColumnas];
-                for (int i = 0; i < cantidadColumnas; i++) {
-                    filas[i] = rs.getObject(i + 1);
-                }
-                modelo.addRow(filas);
-            }
-
-        } catch (SQLException ex) {
-            //System.err.println(ex.toString());
-        } finally {
-            try {
-                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-    }
-
-    public void HoarioSemestre() {
-        try {
-            ImportarHorarioSemestre();
-        } catch (IOException ex) {
-            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public static void ImportarHorarioSemestre() throws IOException, SQLException {
-
-        conexion con = new conexion();
-
-        JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos Excel", "xlsx");
-        fileChooser.setFileFilter(filter);
-        PreparedStatement ps = null, psD = null, is = null, isD = null, psSemestres = null, chkSemestres = null, chkSemestre = null, SemestresDelete = null, insertarh1 = null;
-
-        Connection conn = con.Conectar();
-
-        int result = fileChooser.showOpenDialog(null);
-
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-
-            try {
-
-                FileInputStream file = new FileInputStream(selectedFile);
-                psSemestres = conn.prepareStatement("insert into semestres  (ciclo_escolar,id_empleado,Nombre_empleado,Numero_Tarjeta,puesto,Lunes_Entrada,Lunes_Salida,Martes_Entrada,Martes_Salida,Miercoles_Entrada,Miercoles_Salida,Jueves_Entrada,Jueves_Salida,Viernes_Entrada,Viernes_Salida,Sabado_Entrada,Sabado_Salida,Domingo_Entrada,Domingo_Salida)\n"
-                        + "select * from horario_semestre");
-                insertarh1 = conn.prepareStatement("update semestres set Horario = 'H1' ");
-                psD = conn.prepareStatement("Delete from horario_semestre;");
-                isD = conn.prepareStatement("Delete from dias_pendientes;");
-                SemestresDelete = conn.prepareStatement("Delete from semestres where ciclo_escolar = ?;");
-                chkSemestres = conn.prepareStatement("select distinct ciclo_escolar from semestres;");
-                chkSemestre = conn.prepareStatement("select max(ciclo_escolar) from horario_semestre;");
-
-                XSSFWorkbook wb = new XSSFWorkbook(file);
-                org.apache.poi.ss.usermodel.Sheet sheet = wb.getSheetAt(0);
-
-                int numFilas = sheet.getLastRowNum();
-                for (int b = 6; b <= numFilas; b++) {
-                    Row filas = sheet.getRow(b);
-                    if (filas.getCell(1).getStringCellValue() != null
-                            && filas.getCell(2).getStringCellValue() != null
-                            && filas.getCell(3).getStringCellValue() != null
-                            && filas.getCell(4).getStringCellValue() != null
-                            && filas.getCell(5).getStringCellValue() != null
-                            && filas.getCell(6).getStringCellValue() != null
-                            && filas.getCell(7).getStringCellValue() != null
-                            && filas.getCell(8).getStringCellValue() != null
-                            && filas.getCell(9).getStringCellValue() != null
-                            && filas.getCell(10).getStringCellValue() != null
-                            && filas.getCell(11).getStringCellValue() != null
-                            && filas.getCell(12).getStringCellValue() != null
-                            && filas.getCell(13).getStringCellValue() != null
-                            && filas.getCell(14).getStringCellValue() != null
-                            && filas.getCell(15).getStringCellValue() != null
-                            && filas.getCell(16).getStringCellValue() != null
-                            && filas.getCell(17).getStringCellValue() != null
-                            && filas.getCell(18).getStringCellValue() != null
-                            && filas.getCell(19).getStringCellValue() != null) {
-
-                        psD.execute();
-                        isD.execute();
-                    }
-                }
-                for (int a = 6; a <= numFilas; a++) {
-                    org.apache.poi.ss.usermodel.Row fila = sheet.getRow(a);
-                    ps = conn.prepareStatement("INSERT INTO horario_semestre (ciclo_escolar,id_empleado,Nombre_empleado,puesto,Numero_Tarjeta,Lunes_Entrada,Lunes_Salida,Martes_Entrada,Martes_Salida,Miercoles_Entrada,Miercoles_Salida,Jueves_Entrada,Jueves_Salida,Viernes_Entrada,Viernes_Salida,Sabado_Entrada,Sabado_Salida,Domingo_Entrada,Domingo_Salida ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-
-                    ps.setString(1, fila.getCell(1).getStringCellValue());
-                    ps.setString(2, fila.getCell(2).getStringCellValue());
-                    ps.setString(3, fila.getCell(3).getStringCellValue());
-                    ps.setString(4, fila.getCell(4).getStringCellValue());
-                    ps.setString(5, fila.getCell(5).getStringCellValue());
-                    ps.setString(6, fila.getCell(6).getStringCellValue());
-                    ps.setString(7, fila.getCell(7).getStringCellValue());
-                    ps.setString(8, fila.getCell(8).getStringCellValue());
-                    ps.setString(9, fila.getCell(9).getStringCellValue());
-                    ps.setString(10, fila.getCell(10).getStringCellValue());
-                    ps.setString(11, fila.getCell(11).getStringCellValue());
-                    ps.setString(12, fila.getCell(12).getStringCellValue());
-                    ps.setString(13, fila.getCell(13).getStringCellValue());
-                    ps.setString(14, fila.getCell(14).getStringCellValue());
-                    ps.setString(15, fila.getCell(15).getStringCellValue());
-                    ps.setString(16, fila.getCell(16).getStringCellValue());
-                    ps.setString(17, fila.getCell(17).getStringCellValue());
-                    ps.setString(18, fila.getCell(18).getStringCellValue());
-                    ps.setString(19, fila.getCell(19).getStringCellValue());
-
-                    ps.execute();
-                }
-                ///crea una tabla en base a los dias iniciales y finales del ciclo escolar
-                is = conn.prepareStatement("insert into dias_pendientes (Semestre,Dia_pendiente)\n"
-                        + "    SELECT DISTINCT ciclo_escolar,\n"
-                        + "    DATE_FORMAT(\n"
-                        + "        DATE_ADD(\n"
-                        + "            STR_TO_DATE(SUBSTRING(in1.Ciclo_escolar, 14, 10), '%d/%m/%Y'),\n"
-                        + "            INTERVAL (t0.num) + (t1.num * 10) + (t2.num * 100) DAY\n"
-                        + "        ),\n"
-                        + "        '%d/%m/%y'\n"
-                        + "    )\n"
-                        + "FROM (\n"
-                        + "    SELECT DISTINCT Ciclo_escolar\n"
-                        + "    FROM horario_semestre\n"
-                        + ") in1\n"
-                        + "CROSS JOIN (\n"
-                        + "    SELECT 0 AS num\n"
-                        + "    UNION ALL SELECT 1\n"
-                        + "    UNION ALL SELECT 2\n"
-                        + "    UNION ALL SELECT 3\n"
-                        + "    UNION ALL SELECT 4\n"
-                        + "    UNION ALL SELECT 5\n"
-                        + "    UNION ALL SELECT 6\n"
-                        + "    UNION ALL SELECT 7\n"
-                        + "    UNION ALL SELECT 8\n"
-                        + "    UNION ALL SELECT 9\n"
-                        + ") t0\n"
-                        + "CROSS JOIN (\n"
-                        + "    SELECT 0 AS num\n"
-                        + "    UNION ALL SELECT 1\n"
-                        + "    UNION ALL SELECT 2\n"
-                        + "    UNION ALL SELECT 3\n"
-                        + "    UNION ALL SELECT 4\n"
-                        + "    UNION ALL SELECT 5\n"
-                        + "    UNION ALL SELECT 6\n"
-                        + "    UNION ALL SELECT 7\n"
-                        + "    UNION ALL SELECT 8\n"
-                        + "    UNION ALL SELECT 9\n"
-                        + ") t1\n"
-                        + "CROSS JOIN (\n"
-                        + "    SELECT 0 AS num\n"
-                        + "    UNION ALL SELECT 1\n"
-                        + "    UNION ALL SELECT 2\n"
-                        + "    UNION ALL SELECT 3\n"
-                        + "    UNION ALL SELECT 4\n"
-                        + "    UNION ALL SELECT 5\n"
-                        + "    UNION ALL SELECT 6\n"
-                        + "    UNION ALL SELECT 7\n"
-                        + "    UNION ALL SELECT 8\n"
-                        + "    UNION ALL SELECT 9\n"
-                        + ""
-                        + ") t2\n"
-                        + "WHERE\n"
-                        + "    DATE_ADD(\n"
-                        + "        STR_TO_DATE(SUBSTRING(in1.Ciclo_escolar, 14, 10), '%d/%m/%Y'),\n"
-                        + "        INTERVAL (t0.num) + (t1.num * 10) + (t2.num * 100) DAY\n"
-                        + "    ) <= STR_TO_DATE(SUBSTRING(in1.Ciclo_escolar, 25, 10), '%d/%m/%Y');\n"
-                        + "");
-
-                is.execute();
-                ResultSet resultSet = chkSemestres.executeQuery();
-                ResultSet resultSet2 = chkSemestre.executeQuery();
-                //System.out.println("");
-                List<String> Horarios = new ArrayList<>();
-                while (resultSet.next()) {
-                    Horarios.add(resultSet.getString("ciclo_escolar"));
-                }
-                boolean resultSet2NotInHorarios = true;
-                while (resultSet2.next()) {
-                    String valorResultSet2 = resultSet2.getString("max(ciclo_escolar)");
-                    if (Horarios.contains(valorResultSet2)) {
-                        resultSet2NotInHorarios = false; // resultSet2 está en Horarios, cambiamos la bandera
-                        break; // No es necesario seguir buscando si ya lo encontramos
-                    }
-                }
-                if (resultSet2NotInHorarios) {
-                    psSemestres.execute();
-                    insertarh1.execute();
-                } else {
-                    JFrame frame = new JFrame("Cuadro de Diálogo de Elección");
-                    String Ciclo = resultSet2.getString("max(ciclo_escolar)");
-                    String CicloSubstr = Ciclo.substring(0, Math.min(Ciclo.length(), 12));
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    int respuesta = JOptionPane.showConfirmDialog(frame, "¿Desea sobreescribirlo?", "El Ciclo " + CicloSubstr + " ya esta registrado", JOptionPane.YES_NO_OPTION);
-                    if (respuesta == JOptionPane.YES_OPTION) {
-                        SemestresDelete.setString(1, Ciclo);
-                        SemestresDelete.execute();
-                        psSemestres.execute();
-                        insertarh1.execute();
-                        JOptionPane.showMessageDialog(null, "Ciclo escolar registrado con exito", "", JOptionPane.INFORMATION_MESSAGE);
-                    } else if (respuesta == JOptionPane.NO_OPTION) {
-                        JOptionPane.showMessageDialog(frame, "El Horario no ha sido reemplazado");
-                    }
-                }
-                conn.close();
-                pb();
-
-                JOptionPane.showMessageDialog(null, "Archivo subído con éxito", "", JOptionPane.INFORMATION_MESSAGE);
-            } catch (FileNotFoundException e) {
-                JOptionPane.showMessageDialog(null, "Datos Agregados con exito" + e);
-            } catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(null, "Error: Excel no permitido, por favor sube un archivo valido", "", JOptionPane.ERROR_MESSAGE);
-            } catch (com.mysql.cj.jdbc.exceptions.MysqlDataTruncation e) {
-                JOptionPane.showMessageDialog(null, "Error al intentar leer el documento", "", JOptionPane.ERROR_MESSAGE);
-            } catch (OLE2NotOfficeXmlFileException e) {
-                JOptionPane.showMessageDialog(null, "Error: Excel no permitido, por favor sube un archivo valido", "", JOptionPane.ERROR_MESSAGE);
-
-            } finally {
-
-                try {
-
-                    // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado ps, psD, is, isD;
-                    if (psD != null) {
-                        psD.close();
-                    }
-                    if (ps != null) {
-                        ps.close();
-                    }
-                    if (is != null) {
-                        is.close();
-                    }
-                    if (isD != null) {
-                        isD.close();
-                    }
-                    if (conn != null) {
-                        conn.close();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        }
-    }
     public void MostarDatos() {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -1585,7 +811,7 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
             sorter = new TableRowSorter<>(modelo);
             tUsuarios.setRowSorter(sorter);
 
-            String sql = ("select *from login");
+            String sql = ("select *from usuario");
 
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -1596,8 +822,6 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
             modelo.addColumn("Id");
             modelo.addColumn("Usuario");
             modelo.addColumn("Contraseña");
-            modelo.addColumn("Nombre Completo");
-            modelo.addColumn("Tipo De Usuario");
 
             while (rs.next()) {
                 Object[] filas = new Object[cantidadColumnas];
@@ -1637,95 +861,63 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         contraseña.transferFocus();
     }//GEN-LAST:event_contraseñaActionPerformed
 
-    private void UsuarioEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioEditActionPerformed
-        // TODO add your handling code here:
-        //actualizar usuario
+    private void ActualizarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarUsuarioActionPerformed
+
+        // Actualizar usuario
         conexion conn = new conexion();
         Connection con = conn.Conectar();
         PreparedStatement ps = null;
-        ResultSet rs;
+
         try {
+            // ✅ Consulta correcta: solo se actualizan nombre y clave
+            ps = con.prepareStatement("UPDATE usuario SET nombre = ?,clave = ? WHERE id_usuario = ?");
 
-            ps = con.prepareStatement("UPDATE login SET  usuario=? ,clave=? ,nombre=? ,privilegio=? where id = ?");
+            // Asignamos los valores en el orden correcto
+            ps.setString(1, usuario.getText());              // Nuevo nombre
+            ps.setString(2, contraseña.getText());           // Nueva contraseña
+            ps.setInt(3, Integer.parseInt(idEditar1.getText())); // ID del usuario a actualizar
 
-            ps.setString(1, usuario23.getText());
-            ps.setString(2, contraseña.getText());
-            ps.setString(3, nombrecompleto12.getText());
-            ps.setString(4, Privilegio2.getSelectedItem().toString());
-            ps.setString(5, idEditar1.getText());
             int res = ps.executeUpdate();
 
             if (res > 0) {
-
-                JOptionPane.showMessageDialog(null, "usuario Actualizado");
-
+                JOptionPane.showMessageDialog(null, "Usuario actualizado correctamente");
                 limpiarcajas();
             } else {
-                JOptionPane.showMessageDialog(null, "Error al actualizar el usuario");
-
+                JOptionPane.showMessageDialog(null, "Error: No se pudo actualizar el usuario");
                 limpiarcajas();
             }
 
         } catch (Exception e) {
-            //System.err.println(e);
+            JOptionPane.showMessageDialog(null, "Error al actualizar: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
         }
+
         MostarDatos();
-    }//GEN-LAST:event_UsuarioEditActionPerformed
 
-    private void nombrecompleto12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombrecompleto12KeyTyped
+    }//GEN-LAST:event_ActualizarUsuarioActionPerformed
+
+    private void usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioKeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
+    }//GEN-LAST:event_usuarioKeyTyped
 
-        if (!Character.isLetter(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_ENTER && c != KeyEvent.VK_SPACE) {
-            evt.consume(); // Esto evita que el carácter ingresado se muestre en el campo de texto
-
-            // Muestra el mensaje de alerta
-            JOptionPane.showMessageDialog(null, "Ingrese solo texto", "Error de caractér", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_nombrecompleto12KeyTyped
-
-    private void nombrecompleto12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombrecompleto12KeyPressed
+    private void usuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombrecompleto12KeyPressed
+    }//GEN-LAST:event_usuarioKeyPressed
 
-    private void nombrecompleto12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrecompleto12ActionPerformed
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
-        nombrecompleto12.transferFocus();
-    }//GEN-LAST:event_nombrecompleto12ActionPerformed
-
-    private void usuario23KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuario23KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usuario23KeyTyped
-
-    private void usuario23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuario23KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usuario23KeyPressed
-
-    private void usuario23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuario23ActionPerformed
-        // TODO add your handling code here:
-        usuario23.transferFocus();
-    }//GEN-LAST:event_usuario23ActionPerformed
-
-    private void idEditar1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idEditar1KeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_ENTER && c != KeyEvent.VK_SPACE) {
-            evt.consume(); // Esto evita que el carácter ingresado se muestre en el campo de texto
-
-            // Muestra el mensaje de alerta
-            JOptionPane.showMessageDialog(null, "Ingrese solo números", "Error de caractér", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_idEditar1KeyTyped
-
-    private void idEditar1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idEditar1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idEditar1KeyPressed
-
-    private void idEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idEditar1ActionPerformed
-        // TODO add your handling code here:
-        idEditar1.transferFocus();
-    }//GEN-LAST:event_idEditar1ActionPerformed
+        usuario.transferFocus();
+    }//GEN-LAST:event_usuarioActionPerformed
 
     private void EditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarUsuarioActionPerformed
         // TODO add your handling code here:
@@ -1740,26 +932,17 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
             int fila = tUsuarios.getSelectedRow();
 
             idEditar1.setText(tUsuarios.getValueAt(fila, 0).toString());
-            usuario23.setText(tUsuarios.getValueAt(fila, 1).toString());
+            usuario.setText(tUsuarios.getValueAt(fila, 1).toString());
             contraseña.setText(tUsuarios.getValueAt(fila, 2).toString());
-            nombrecompleto12.setText(tUsuarios.getValueAt(fila, 3).toString());
-            Privilegio2.setSelectedItem(tUsuarios.getValueAt(fila, 4).toString());
 
             try {
                 int valor = 0;
-                ps = con.prepareStatement("select id  from login where id=?");
-                ps.setString(1, idEditar1.getText());
+                ps = con.prepareStatement("select id_usuario  from usuario where id_usuario=?");
                 ResultSet res = ps.executeQuery();
                 if (res.next()) {
-                    valor = res.getInt("id");
+                    valor = res.getInt("id_usuario");
                 }
-                if (valor != 1) {
-                    idEditar1.setEnabled(false);
-                    Privilegio2.setEnabled(true);
-                } else {
-                    idEditar1.setEnabled(false);
-                    Privilegio2.setEnabled(false);
-                }
+
             } catch (Exception e) {
                 System.err.println(e);
             }
@@ -1781,14 +964,14 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         if (fila != -1) { // Verifica si se seleccionó alguna fila
             try {
                 String valor = tUsuarios.getValueAt(fila, 0).toString();
-                ps = con.prepareStatement("DELETE FROM login WHERE id = ? and id != 1");
+                ps = con.prepareStatement("DELETE FROM usuario WHERE id_usuario = ? and id_usuario != 1");
                 ps.setString(1, valor);
                 int res = ps.executeUpdate();
                 if (res > 0) {
                     JOptionPane.showMessageDialog(null, "Usuario se eliminó con éxito");
                     limpiarcajas();
                 } else {
-                    JOptionPane.showMessageDialog(null, "El administrador principal no puede eliminarse");
+                    JOptionPane.showMessageDialog(null, "El usuario principal no puede eliminarse");
                 }
             } catch (Exception e) {
                 //System.err.println(e);
@@ -1803,47 +986,41 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
 
     private void GuardarNuevoUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarNuevoUsuActionPerformed
         // TODO add your handling code here:
+
         conexion conn = new conexion();
         Connection con = conn.Conectar();
-        PreparedStatement ps = null, chk = null;
-        ResultSet rs, rschk;
-        String id = "", Usuario = "";
+        PreparedStatement ps = null;
 
         try {
-            chk = con.prepareStatement("select id,Usuario from login where id=?  or Usuario = ?");
-            chk.setString(1, idText.getText());
-            chk.setString(2, UsuarioEditar2.getText());
-            rschk = chk.executeQuery();
-            if (rschk.next()) {
-                id = rschk.getString("id");
-                Usuario = rschk.getString("Usuario");
-            }
-            if (id.equals(idText.getText()) || Usuario.equals(UsuarioEditar2.getText())) {
-                JOptionPane.showMessageDialog(null, "Verifique sus campos ", "Error al registar nuevo usuario", JOptionPane.ERROR_MESSAGE);
+            ps = con.prepareStatement("INSERT INTO usuario (nombre, clave) VALUES (?, ?)");
+
+            ps.setString(1, Usuario2.getText());
+            ps.setString(2, ContraseñaNueva.getText());
+
+            int res = ps.executeUpdate();
+
+            if (res > 0) {
+                JOptionPane.showMessageDialog(null, "Nuevo Usuario Creado");
+                limpiarcajas();
             } else {
-                ps = con.prepareStatement("INSERT INTO login (id,usuario,clave,nombre,privilegio) select ?,?,?,?,? where ?!='' and ?!='' and ?!='' and ?!=''");
-
-                ps.setString(1, idText.getText());
-                ps.setString(2, UsuarioEditar2.getText());
-                ps.setString(3, txtPasword.getText());
-                ps.setString(4, nombrecompleto.getText());
-                ps.setString(5, ComboPrivilegio.getSelectedItem().toString());
-                ps.setString(6, UsuarioEditar2.getText());
-                ps.setString(7, txtPasword.getText());
-                ps.setString(8, nombrecompleto.getText());
-                ps.setString(9, ComboPrivilegio.getSelectedItem().toString());
-
-                int res = ps.executeUpdate();
-                if (res > 0) {
-                    JOptionPane.showMessageDialog(null, "Usuario registrado con exito");
-                    PanelUsuario.setSelectedIndex(1);
-                    limpiarcajas();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Error de registro verifique sus campos");
-                }
+                JOptionPane.showMessageDialog(null, "Error al crear el nuevo usuario");
+                limpiarcajas();
             }
+
         } catch (Exception e) {
-            //System.err.println(e);
+
+            JOptionPane.showMessageDialog(null, "Error al insertar usuario: " + e.getMessage());
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
         }
         bloquearNuevoUsuario();
         MostarDatos();
@@ -1855,36 +1032,44 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
         desbloquarNuevoUsuario();
     }//GEN-LAST:event_GuardarNuevoUsu1ActionPerformed
 
-    private void txtPaswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaswordKeyTyped
+    private void ContraseñaNuevaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ContraseñaNuevaKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPaswordKeyTyped
+    }//GEN-LAST:event_ContraseñaNuevaKeyTyped
 
-    private void txtPaswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaswordKeyPressed
+    private void ContraseñaNuevaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ContraseñaNuevaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPaswordKeyPressed
+    }//GEN-LAST:event_ContraseñaNuevaKeyPressed
 
-    private void txtPaswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPaswordActionPerformed
+    private void ContraseñaNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaNuevaActionPerformed
         // TODO add your handling code here:
-        txtPasword.transferFocus();
-    }//GEN-LAST:event_txtPaswordActionPerformed
+        ContraseñaNueva.transferFocus();
+    }//GEN-LAST:event_ContraseñaNuevaActionPerformed
 
-    private void UsuarioEditar2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsuarioEditar2KeyTyped
+    private void Usuario2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Usuario2KeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsuarioEditar2KeyTyped
+    }//GEN-LAST:event_Usuario2KeyTyped
 
-    private void UsuarioEditar2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsuarioEditar2KeyPressed
+    private void Usuario2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Usuario2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsuarioEditar2KeyPressed
+    }//GEN-LAST:event_Usuario2KeyPressed
 
-    private void UsuarioEditar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioEditar2ActionPerformed
+    private void Usuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Usuario2ActionPerformed
         // TODO add your handling code here:
-        UsuarioEditar2.transferFocus();
+        Usuario2.transferFocus();
 
-    }//GEN-LAST:event_UsuarioEditar2ActionPerformed
+    }//GEN-LAST:event_Usuario2ActionPerformed
 
-    private void idTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idTextKeyTyped
+    private void idEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idEditar1ActionPerformed
         // TODO add your handling code here:
+        idEditar1.transferFocus();
+    }//GEN-LAST:event_idEditar1ActionPerformed
 
+    private void idEditar1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idEditar1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idEditar1KeyPressed
+
+    private void idEditar1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idEditar1KeyTyped
+        // TODO add your handling code here:
         char c = evt.getKeyChar();
 
         if (!Character.isDigit(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_ENTER && c != KeyEvent.VK_SPACE) {
@@ -1893,45 +1078,16 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
             // Muestra el mensaje de alerta
             JOptionPane.showMessageDialog(null, "Ingrese solo números", "Error de caractér", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_idTextKeyTyped
-
-    private void idTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idTextKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idTextKeyPressed
-
-    private void idTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idTextActionPerformed
-        // TODO add your handling code here:
-        idText.transferFocus();
-    }//GEN-LAST:event_idTextActionPerformed
-
-    private void nombrecompletoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombrecompletoKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if (!Character.isLetter(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_ENTER && c != KeyEvent.VK_SPACE) {
-            evt.consume(); // Esto evita que el carácter ingresado se muestre en el campo de texto
-
-            // Muestra el mensaje de alerta
-            JOptionPane.showMessageDialog(null, "Ingrese solo texto", "Error de caractér", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_nombrecompletoKeyTyped
-
-    private void nombrecompletoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombrecompletoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombrecompletoKeyPressed
-
-    private void nombrecompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrecompletoActionPerformed
-        // TODO add your handling code here:
-        nombrecompleto.transferFocus();
-    }//GEN-LAST:event_nombrecompletoActionPerformed
+    }//GEN-LAST:event_idEditar1KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboPrivilegio;
+    private javax.swing.JButton ActualizarUsuario;
     private javax.swing.JPanel ContenedorTitulo10;
     private javax.swing.JPanel ContenedorTitulo11;
     private javax.swing.JPanel ContenedorTitulo5;
     private javax.swing.JPanel ContenedorTitulo7;
+    private javax.swing.JTextField ContraseñaNueva;
     private javax.swing.JPanel EditUsurio;
     private javax.swing.JButton EditarUsuario;
     private javax.swing.JButton EliminarUsuario;
@@ -1940,30 +1096,21 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
     private javax.swing.JPanel HoraSemestre;
     private javax.swing.JButton InicioDeSesion4;
     private javax.swing.JPanel NuevoUsuario;
-    private javax.swing.JTabbedPane PanelPrincipal;
     private javax.swing.JTabbedPane PanelUsuario;
-    private javax.swing.JComboBox<String> Privilegio2;
     private javax.swing.JLabel Titulo10;
     private javax.swing.JLabel Titulo11;
-    private javax.swing.JLabel Titulo19;
     private javax.swing.JLabel Titulo20;
     private javax.swing.JLabel Titulo21;
-    private javax.swing.JLabel Titulo22;
-    private javax.swing.JLabel Titulo23;
     private javax.swing.JLabel Titulo27;
     private javax.swing.JLabel Titulo28;
     private javax.swing.JLabel Titulo29;
-    private javax.swing.JLabel Titulo34;
-    private javax.swing.JLabel Titulo35;
     private javax.swing.JLabel Titulo5;
     private javax.swing.JLabel Titulo7;
     private javax.swing.JPanel Usuario;
-    private javax.swing.JButton UsuarioEdit;
-    private javax.swing.JTextField UsuarioEditar2;
+    private javax.swing.JTextField Usuario2;
     private javax.swing.JPanel VerUsuario;
     private javax.swing.JTextField contraseña;
     private javax.swing.JTextField idEditar1;
-    private javax.swing.JTextField idText;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel6;
@@ -1972,22 +1119,14 @@ public class ConfiguracionAdmin extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
-    private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
-    private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel43;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField nombrecompleto;
-    private javax.swing.JTextField nombrecompleto12;
     private javax.swing.JTable tUsuarios;
-    private javax.swing.JTextField txtPasword;
-    private javax.swing.JTextField usuario23;
+    private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 
 }

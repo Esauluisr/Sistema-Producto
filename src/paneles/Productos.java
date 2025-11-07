@@ -1,8 +1,6 @@
 package paneles;
 
 import Conexion.conexion;
-import Entidades.Ciclo_Escolar;
-import Modelo.ModeloCiclo_Escolar;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -41,9 +39,9 @@ public final class Productos extends javax.swing.JPanel {
         initComponents();
 
         setBackground(new Color(0, 0, 0, 0));
-        TablaEmpleados.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        TablaEmpleados.getTableHeader().setOpaque(false);
-        TablaEmpleados.setRowHeight(25);
+        TablaProductos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        TablaProductos.getTableHeader().setOpaque(false);
+        TablaProductos.setRowHeight(25);
 
         //setVisible(true);
         fechainicio.setCalendar(fechaactual);
@@ -51,7 +49,6 @@ public final class Productos extends javax.swing.JPanel {
         mostrarDatos();
         //MostarDaReportetos();
         //Data("", "");
-        llenarCiclos();
 
     }
 
@@ -71,7 +68,7 @@ public final class Productos extends javax.swing.JPanel {
         TituloDeLaTabla = new javax.swing.JTabbedPane();
         ContenedorTablaEmpleados = new javax.swing.JPanel();
         ScrollTablaEmpleado = new javax.swing.JScrollPane();
-        TablaEmpleados = new javax.swing.JTable();
+        TablaProductos = new javax.swing.JTable();
         NombreEmpleado = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         Titulo23 = new javax.swing.JLabel();
@@ -125,45 +122,26 @@ public final class Productos extends javax.swing.JPanel {
 
         ContenedorTablaEmpleados.setBackground(new java.awt.Color(255, 255, 255));
 
-        TablaEmpleados = new javax.swing.JTable(){
+        TablaProductos = new javax.swing.JTable(){
             public boolean isCellEditable(int row, int col){
                 return false;
             }
         };
-        TablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+        TablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id_Empleado", "id_Ciclo_Escolar", "Nombre_Empleado", "Estado", "Fecha", "Hora", "1° Incidencia", "2° Incidencia"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
-        TablaEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        TablaEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+        ));
+        TablaProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TablaProductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablaEmpleadosMouseClicked(evt);
+                TablaProductosMouseClicked(evt);
             }
         });
-        ScrollTablaEmpleado.setViewportView(TablaEmpleados);
-        if (TablaEmpleados.getColumnModel().getColumnCount() > 0) {
-            TablaEmpleados.getColumnModel().getColumn(0).setResizable(false);
-            TablaEmpleados.getColumnModel().getColumn(1).setResizable(false);
-            TablaEmpleados.getColumnModel().getColumn(2).setResizable(false);
-            TablaEmpleados.getColumnModel().getColumn(2).setPreferredWidth(100);
-            TablaEmpleados.getColumnModel().getColumn(3).setResizable(false);
-            TablaEmpleados.getColumnModel().getColumn(4).setResizable(false);
-            TablaEmpleados.getColumnModel().getColumn(5).setResizable(false);
-            TablaEmpleados.getColumnModel().getColumn(6).setResizable(false);
-            TablaEmpleados.getColumnModel().getColumn(7).setResizable(false);
-        }
+        ScrollTablaEmpleado.setViewportView(TablaProductos);
 
         javax.swing.GroupLayout ContenedorTablaEmpleadosLayout = new javax.swing.GroupLayout(ContenedorTablaEmpleados);
         ContenedorTablaEmpleados.setLayout(ContenedorTablaEmpleadosLayout);
@@ -173,7 +151,7 @@ public final class Productos extends javax.swing.JPanel {
         );
         ContenedorTablaEmpleadosLayout.setVerticalGroup(
             ContenedorTablaEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ScrollTablaEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+            .addComponent(ScrollTablaEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
 
         TituloDeLaTabla.addTab("Productos Del catalogo", ContenedorTablaEmpleados);
@@ -216,30 +194,30 @@ public final class Productos extends javax.swing.JPanel {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(NombreEmpleado)
                         .addGap(12, 12, 12)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                                .addComponent(nombre)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fechafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(FechaInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(BuscarHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Titulo23)
+                                .addComponent(fechafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(FechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProductoIva, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(FechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(FechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BuscarHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Titulo23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ProductoIva, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(TituloDeLaTabla))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(3, 3, 3)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FechaInicio)
                     .addComponent(FechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -332,19 +310,19 @@ public final class Productos extends javax.swing.JPanel {
 
     }//GEN-LAST:event_nombreKeyTyped
 
-    private void TablaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaEmpleadosMouseClicked
+    private void TablaProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProductosMouseClicked
         if (evt.getClickCount() == 2) {
 
-            if (TablaEmpleados.getSelectedRow() != -1) { // Verifica si se seleccionó alguna fila setSelectedItem(
-                int fila = TablaEmpleados.getSelectedRow();
-                String n = (TablaEmpleados.getValueAt(fila, 2).toString());
+            if (TablaProductos.getSelectedRow() != -1) { // Verifica si se seleccionó alguna fila setSelectedItem(
+                int fila = TablaProductos.getSelectedRow();
+                String n = (TablaProductos.getValueAt(fila, 2).toString());
                 nombre.setText(n);
 
             } else {
                 JOptionPane.showMessageDialog(null, "No ha seleccionado ningun usuario ", "Error ", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_TablaEmpleadosMouseClicked
+    }//GEN-LAST:event_TablaProductosMouseClicked
 
     private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
         if (evt.getClickCount() == 2) {
@@ -360,14 +338,7 @@ public final class Productos extends javax.swing.JPanel {
     public void mostrarDatos() {
         Data("", "");
     }
-
-    private void llenarCiclos() {
-        ModeloCiclo_Escolar modCiclos = new ModeloCiclo_Escolar();
-        ArrayList<Ciclo_Escolar> Ciclos = modCiclos.getCiclo_Escolar();
-
-        
-    }
-
+    
     //filtra la tabla del incidencias_semestre
     public void Data(String d1, String d2) {
         conexion conn = new conexion();
@@ -380,39 +351,24 @@ public final class Productos extends javax.swing.JPanel {
         try {
 
             if (d1.equals("") || d2.equals("")) {
-                st = con.prepareStatement("select IDEmpleado,CicloEscolar,nombre,Numero_De_Tarjeta,Estado,DATE_FORMAT(Fecha, '%d/%m/%Y'),Hora,P_Incidencia,S_Incidencia,Justificación FROM incidencias_semestre;");
+                st = con.prepareStatement("SELECT id_producto,partida,rubro,unidad_medida,descripcion,marca,cantidad,precio,observacion FROM PRODUCTOS");
                 DiseñoTabla();
-                SimpleDateFormat df = new SimpleDateFormat("d/MM/yyyy");
+                SimpleDateFormat df = new SimpleDateFormat("d/MM/yyy");
                 String date1 = df.format(fechainicio.getDate());
                 String date2 = df.format(fechafinal.getDate());
-
                 //filtrar();
                 Data(date1, date2);
 
-            } else {
-                st = con.prepareStatement("SELECT IDEmpleado, CicloEscolar, nombre, Numero_De_Tarjeta, Estado, DATE_FORMAT(Fecha, '%d/%m/%Y'), Hora, P_Incidencia, S_Incidencia, Justificación \n"
-                        + "FROM incidencias_semestre \n"
-                        + "WHERE Fecha BETWEEN STR_TO_DATE(?, '%d/%m/%Y') AND STR_TO_DATE(?, '%d/%m/%Y') \n"
-                        + "AND CicloEscolar = ?\n"
-                        + "AND Nombre COLLATE utf8_general_ci LIKE CONCAT(?, '%');");
-
-                st.setString(1, d1);
-                st.setString(2, d2);
-                st.setString(4, Nombre);
-                //System.out.printf(Nombre + ' ');
-                //System.out.printf(d1 + ' ');
-                //System.out.printf(d2 + ' ');
-                //System.out.printf(CicloEscolar + ' ');
             }
 
             rs = st.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) TablaEmpleados.getModel();
+            DefaultTableModel model = (DefaultTableModel) TablaProductos.getModel();
 
             //filtrar();
             Object[] row;
 
             while (rs.next()) {
-                row = new Object[10];
+                row = new Object[8];
                 row[0] = rs.getString(1);
                 row[1] = rs.getString(2);
                 row[2] = rs.getString(3);
@@ -421,8 +377,6 @@ public final class Productos extends javax.swing.JPanel {
                 row[5] = rs.getString(6);
                 row[6] = rs.getString(7);
                 row[7] = rs.getString(8);
-                row[8] = rs.getString(9);
-                row[9] = rs.getString(10);
 
                 model.addRow(row);
             }
@@ -447,53 +401,53 @@ public final class Productos extends javax.swing.JPanel {
             }
         }
     }
-
-    public void DiseñoTabla() {
+    
+    
+    public void DiseñoTabla(){
+       
         DefaultTableModel modelo = new DefaultTableModel();
-        TablaEmpleados.setModel(modelo);
-        TablaEmpleados.setAutoCreateRowSorter(true);
+        TablaProductos.setModel(modelo);
+        TablaProductos.setAutoCreateRowSorter(true);
 
         sorter = new TableRowSorter<>(modelo);
-        TablaEmpleados.setRowSorter(sorter);
+        TablaProductos.setRowSorter(sorter);
 
         modelo.addColumn("ID");
-        modelo.addColumn("Ciclo Escolar");
-        modelo.addColumn("Nombre Del Empleado");
-        modelo.addColumn("N.D.T");
-        modelo.addColumn("Estado");
-        modelo.addColumn("Fecha");
-        modelo.addColumn("Hora");
-        modelo.addColumn("1° Incidencia");
-        modelo.addColumn("2° Incidencia");
-        modelo.addColumn("Justficacion");;
+        modelo.addColumn("Partida");
+        modelo.addColumn("Rubro");
+        modelo.addColumn("Unida Medida");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Marca");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Descripcion");
 
         /* Se da tamaño al a las columas del Jtable*/
-        TableColumn id = TablaEmpleados.getColumnModel().getColumn(0);
-        TableColumn ciclo = TablaEmpleados.getColumnModel().getColumn(1);
-        TableColumn columnaNombreEmpleado = TablaEmpleados.getColumnModel().getColumn(2);
-        TableColumn NDT = TablaEmpleados.getColumnModel().getColumn(3);
-        TableColumn columnaEstado = TablaEmpleados.getColumnModel().getColumn(4);
-        TableColumn fecha = TablaEmpleados.getColumnModel().getColumn(5);
-        TableColumn columnaHora = TablaEmpleados.getColumnModel().getColumn(6);
-        TableColumn incidencia1 = TablaEmpleados.getColumnModel().getColumn(7);
-        TableColumn incidencia2 = TablaEmpleados.getColumnModel().getColumn(8);
+        TableColumn id = TablaProductos.getColumnModel().getColumn(0);
+        TableColumn partida = TablaProductos.getColumnModel().getColumn(1);
+        TableColumn rubro = TablaProductos.getColumnModel().getColumn(2);
+        TableColumn UnidadMedida = TablaProductos.getColumnModel().getColumn(3);
+        TableColumn Descripcion = TablaProductos.getColumnModel().getColumn(4);
+        TableColumn Marca = TablaProductos.getColumnModel().getColumn(5);
+        TableColumn Cantidad = TablaProductos.getColumnModel().getColumn(6);
+        TableColumn Precio = TablaProductos.getColumnModel().getColumn(7);
 
-        columnaNombreEmpleado.setPreferredWidth(180);
-        NDT.setPreferredWidth(15);
-        columnaEstado.setPreferredWidth(30);
-        columnaHora.setPreferredWidth(25);
-        id.setPreferredWidth(10);
-        ciclo.setPreferredWidth(60);
-        fecha.setPreferredWidth(40);
-        incidencia1.setPreferredWidth(40);
-        incidencia2.setPreferredWidth(40);
+        id.setPreferredWidth(5);
+        partida.setPreferredWidth(5);
+        rubro.setPreferredWidth(5);
+        UnidadMedida.setPreferredWidth(15);
+        Descripcion.setPreferredWidth(200);
+        Marca.setPreferredWidth(20);
+        Cantidad.setPreferredWidth(20);
+        Precio.setPreferredWidth(20);
 
         /* centrar datos */
         DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
         ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
-        TablaEmpleados.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
-
+        TablaProductos.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
     }
+
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -505,7 +459,7 @@ public final class Productos extends javax.swing.JPanel {
     private javax.swing.JLabel NombreEmpleado;
     private javax.swing.JComboBox<String> ProductoIva;
     private javax.swing.JScrollPane ScrollTablaEmpleado;
-    private javax.swing.JTable TablaEmpleados;
+    private javax.swing.JTable TablaProductos;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel Titulo23;
     private javax.swing.JTabbedPane TituloDeLaTabla;

@@ -785,7 +785,7 @@ public class inicio extends javax.swing.JPanel {
             try {
 
                 FileInputStream file = new FileInputStream(selectedFile);
-                psd = conn.prepareStatement("Delete from horario_reloj");
+                psd = conn.prepareStatement("Delete from ");
 
                 XSSFWorkbook wb = new XSSFWorkbook(file);
                 Sheet sheet = wb.getSheetAt(0);

@@ -265,44 +265,36 @@ public class loginn extends javax.swing.JFrame {
         String user = txtusername.getText();
         String pass = txtpassword.getText();
 
-        String url = "select usuario, clave , rol from usuario "
-                + "where usuario = '" + user + "'";
-
+        String sql = "SELECT nombre, clave FROM usuario WHERE nombre = ? AND clave = ?";
+       
         try {
             conexion conn = new conexion();
             Connection con = conn.Conectar();
-            PreparedStatement ps = null;
-            ps = con.prepareStatement(url);
-            ResultSet rs = ps.executeQuery();
+            PreparedStatement ps = con.prepareStatement(sql);
             
+            // Asignamos los valores de usuario y contraseña
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            
+            ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
-                String u = rs.getString("usuario");
+                String u = rs.getString("nombre");
                 String p = rs.getString("clave");
-                String pri = rs.getString("rol");
-
-                if (pass.equals(p)) {
-
-                    if (pri.equals("usuario")) {
-                        MenuUsuario usuario = new MenuUsuario();
-                        usuario.setVisible(true);
-                        this.setVisible(false);
-                        gifload.setVisible(false);
-                    } else {
-                        gifload.setVisible(false);
-                        JOptionPane.showMessageDialog(null, "Acceso con exito");
-                    }
-                } else {
-                    gifload.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "La contraseña es incorrecta");
-                }
+               
+                MenuUsuario menu = new MenuUsuario();
+                menu.setVisible(true);
+                this.setVisible(false);
+                gifload.setVisible(false);
+                
             } else {
                 gifload.setVisible(false);
-                JOptionPane.showMessageDialog(null, "El Usuario no esta registrado dentro de la base de datos");
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
             }
 
         } catch (SQLException ex) {
-            System.out.print(ex.toString());
-        }
+            JOptionPane.showMessageDialog(null, "Error en la base de datos " + ex.getMessage());
+        } 
     }
     private void disableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_disableMouseClicked
         txtpassword.setEchoChar((char) 0);

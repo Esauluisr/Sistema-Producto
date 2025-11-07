@@ -32,9 +32,9 @@ public class MenuSemanal extends javax.swing.JPanel {
         initComponents();
     
         setBackground(new Color(0, 0, 0, 0));
-        TablaEmpleados.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        TablaEmpleados.getTableHeader().setOpaque(false);
-        TablaEmpleados.setRowHeight(25);
+        TablaMenuSemanal.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        TablaMenuSemanal.getTableHeader().setOpaque(false);
+        TablaMenuSemanal.setRowHeight(25);
          
         fechainicio.setCalendar(fechaactual);
         fechafinal.setCalendar(fechaactual);
@@ -65,7 +65,7 @@ public class MenuSemanal extends javax.swing.JPanel {
         TituloDeLaTabla = new javax.swing.JTabbedPane();
         ContenedorDeLaTablaEmpleados = new javax.swing.JPanel();
         ScrollTablaEmpleados = new javax.swing.JScrollPane();
-        TablaEmpleados = new javax.swing.JTable();
+        TablaMenuSemanal = new javax.swing.JTable();
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -137,12 +137,12 @@ public class MenuSemanal extends javax.swing.JPanel {
 
         ContenedorDeLaTablaEmpleados.setBackground(new java.awt.Color(255, 255, 255));
 
-        TablaEmpleados = new javax.swing.JTable(){
+        TablaMenuSemanal = new javax.swing.JTable(){
             public boolean isCellEditable(int row, int col){
                 return false;
             }
         };
-        TablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+        TablaMenuSemanal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -150,7 +150,7 @@ public class MenuSemanal extends javax.swing.JPanel {
                 "Tipod de comida", "Lunes", "Martes", "Miercoles", "Jueves ", "Viernes "
             }
         ));
-        ScrollTablaEmpleados.setViewportView(TablaEmpleados);
+        ScrollTablaEmpleados.setViewportView(TablaMenuSemanal);
 
         javax.swing.GroupLayout ContenedorDeLaTablaEmpleadosLayout = new javax.swing.GroupLayout(ContenedorDeLaTablaEmpleados);
         ContenedorDeLaTablaEmpleados.setLayout(ContenedorDeLaTablaEmpleadosLayout);
@@ -173,19 +173,21 @@ public class MenuSemanal extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(NombrePlatillo)
                 .addGap(18, 18, 18)
-                .addComponent(ContenedorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173)
-                .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FechaInicio))
-                .addGap(18, 18, 18)
+                .addComponent(ContenedorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ContenedorPanelLayout.createSequentialGroup()
+                        .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(fechafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(BuscarRecordatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(FechaFinal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(491, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addComponent(BuscarRecordatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ContenedorPanelLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(FechaInicio)
+                        .addGap(57, 57, 57)
+                        .addComponent(FechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(504, Short.MAX_VALUE))
             .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenedorPanelLayout.createSequentialGroup()
                     .addContainerGap()
@@ -199,19 +201,15 @@ public class MenuSemanal extends javax.swing.JPanel {
                 .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FechaInicio))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ContenedorPanelLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NombrePlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ContenedorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(ContenedorPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fechafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BuscarRecordatorio))))
-                .addContainerGap(545, Short.MAX_VALUE))
+                    .addComponent(fechafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarRecordatorio)
+                    .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ContenedorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(NombrePlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(557, Short.MAX_VALUE))
             .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ContenedorPanelLayout.createSequentialGroup()
                     .addGap(94, 94, 94)
@@ -258,9 +256,9 @@ public class MenuSemanal extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
 
-            TablaEmpleados.setModel(new DefaultTableModel(null, new Object[]{"Ciclo_escolar", "Dia pendiente"}));
+            TablaMenuSemanal.setModel(new DefaultTableModel(null, new Object[]{"Id","Tipo Comida", "Lunes","Martes","Miercoles","Jueves","Viernes","Fecha Registro"}));
 
-            SimpleDateFormat df = new SimpleDateFormat("d/MM/yyy");
+            SimpleDateFormat df = new SimpleDateFormat("YYY/MM/d");
             String date1 = df.format(fechainicio.getDate());
             String date2 = df.format(fechafinal.getDate());
 
@@ -310,41 +308,29 @@ public class MenuSemanal extends javax.swing.JPanel {
         try {
 
             if (d1.equals("") || d2.equals("")) {
-                st = con.prepareStatement("select substring(Semestre,1,12) as Ciclo_escolar, concat(substring(dia_pendiente,1,2),'/',substring(dia_pendiente,4,2),'/20',substring(dia_pendiente,7,2)) as dia_pendiente from dias_pendientes\n"
-                        + "                        left join incidencias_semestre on concat(substring(dia_pendiente,1,2),'/',substring(dia_pendiente,4,2),'/20',substring(dia_pendiente,7,2)) = date_format(Fecha,'%d/%m/%Y')\n"
-                        + "                        where fecha is null  and Dia_Pendiente NOT IN (\n"
-                        + "                            SELECT CONCAT(SUBSTRING(fecha_inhabil, 1, 6), SUBSTRING(fecha_inhabil, 9, 10)) AS fecha\n"
-                        + "                           FROM dias_inhabiles\n"
-                        + "                        )\n"
-                        + "                        group by Ciclo_escolar,Dia_Pendiente,semestre;");
-                TablaEmpleados.setModel(new DefaultTableModel(null, new Object[]{"Ciclo Escolar", "Dia Pendiente",}));
+                st = con.prepareStatement("SELECT *FROM MENU_SEMANAL");
+                TablaMenuSemanal.setModel(new DefaultTableModel(null, new Object[]{"Id","Tipo Comida", "Lunes","Martes","Miercoles","Jueves","Viernes","Fecha Registro"}));
                 SimpleDateFormat df = new SimpleDateFormat("d/MM/yyy");
                 String date1 = df.format(fechainicio.getDate());
                 String date2 = df.format(fechafinal.getDate());
                 Data(date1, date2);
 
-            } else {
-                st = con.prepareStatement("select substring(Semestre,1,12) as Ciclo_escolar, concat(substring(dia_pendiente,1,2),'/',substring(dia_pendiente,4,2),'/20',substring(dia_pendiente,7,2)) as dia_pendiente from dias_pendientes\n"
-                        + "left join incidencias_semestre on concat(substring(dia_pendiente,1,2),'/',substring(dia_pendiente,4,2),'/20',substring(dia_pendiente,7,2)) = date_format(Fecha,'%d/%m/%Y')\n"
-                        + "where fecha is null and str_to_date(concat(substring(dia_pendiente,1,2),'/',substring(dia_pendiente,4,2),'/20',substring(dia_pendiente,7,2)),'%d/%m/%Y') between str_to_date(?,'%d/%m/%Y') and str_to_date(?,'%d/%m/%Y')  and Dia_Pendiente NOT IN (\n"
-                        + "    SELECT CONCAT(SUBSTRING(fecha_inhabil, 1, 6), SUBSTRING(fecha_inhabil, 9, 10)) AS fecha\n"
-                        + "    FROM dias_inhabiles\n"
-                        + ")\n"
-                        + "group by Ciclo_escolar,Dia_Pendiente,semestre;");
-
-                st.setString(1, d1);
-                st.setString(2, d2);
             }
-
             rs = st.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) TablaEmpleados.getModel();
+            DefaultTableModel model = (DefaultTableModel) TablaMenuSemanal.getModel();
 
             Object[] row;
 
             while (rs.next()) {
-                row = new Object[2];
+                row = new Object[8];
                 row[0] = rs.getString(1);
                 row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getString(5);
+                row[5] = rs.getString(6);
+                row[6] = rs.getString(7);
+                row[7] = rs.getString(8);
 
                 model.addRow(row);
             }
@@ -382,7 +368,7 @@ public class MenuSemanal extends javax.swing.JPanel {
     private javax.swing.JLabel FechaInicio;
     private javax.swing.JLabel NombrePlatillo;
     private javax.swing.JScrollPane ScrollTablaEmpleados;
-    private javax.swing.JTable TablaEmpleados;
+    private javax.swing.JTable TablaMenuSemanal;
     private javax.swing.JLabel Titulo;
     private javax.swing.JTabbedPane TituloDeLaTabla;
     private com.toedter.calendar.JDateChooser fechafinal;
