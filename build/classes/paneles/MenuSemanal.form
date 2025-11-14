@@ -125,7 +125,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="NombrePlatillo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ContenedorNombre" min="-2" pref="455" max="-2" attributes="0"/>
+                      <Component id="Nplatillo" min="-2" pref="455" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -133,7 +133,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="fechafinal" min="-2" pref="150" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="BuscarRecordatorio" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="Buscar" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
@@ -165,9 +165,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="fechafinal" min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="fechainicio" min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="BuscarRecordatorio" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="Buscar" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="ContenedorNombre" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="Nplatillo" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                               <Component id="NombrePlatillo" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -189,17 +189,17 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="NSimSun" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nombre del paltillo:"/>
+                <Property name="text" type="java.lang.String" value="Nombre del platillo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="ContenedorNombre">
+            <Component class="javax.swing.JTextField" name="Nplatillo">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ContenedorNombreMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContenedorNombreActionPerformed"/>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ContenedorNombreKeyTyped"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="NplatilloMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NplatilloActionPerformed"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NplatilloKeyTyped"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="FechaInicio">
@@ -228,7 +228,7 @@
                 <Property name="dateFormatString" type="java.lang.String" value="d/MM/yyy"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BuscarRecordatorio">
+            <Component class="javax.swing.JButton" name="Buscar">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/buscar.png"/>
@@ -237,7 +237,7 @@
                 <Property name="focusPainted" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarRecordatorioActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JTabbedPane" name="TituloDeLaTabla">

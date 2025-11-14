@@ -7,12 +7,16 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -30,16 +34,16 @@ public class MenuSemanal extends javax.swing.JPanel {
 
     public MenuSemanal() {
         initComponents();
-    
+
         setBackground(new Color(0, 0, 0, 0));
         TablaMenuSemanal.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         TablaMenuSemanal.getTableHeader().setOpaque(false);
         TablaMenuSemanal.setRowHeight(25);
-         
+
         fechainicio.setCalendar(fechaactual);
         fechafinal.setCalendar(fechaactual);
 
-        Data("", "");
+        MostrarMenu();
     }
 
     /**
@@ -56,12 +60,12 @@ public class MenuSemanal extends javax.swing.JPanel {
         Titulo = new javax.swing.JLabel();
         ContenedorPanel = new javax.swing.JPanel();
         NombrePlatillo = new javax.swing.JLabel();
-        ContenedorNombre = new javax.swing.JTextField();
+        Nplatillo = new javax.swing.JTextField();
         FechaInicio = new javax.swing.JLabel();
         fechainicio = new com.toedter.calendar.JDateChooser();
         FechaFinal = new javax.swing.JLabel();
         fechafinal = new com.toedter.calendar.JDateChooser();
-        BuscarRecordatorio = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
         TituloDeLaTabla = new javax.swing.JTabbedPane();
         ContenedorDeLaTablaEmpleados = new javax.swing.JPanel();
         ScrollTablaEmpleados = new javax.swing.JScrollPane();
@@ -97,22 +101,22 @@ public class MenuSemanal extends javax.swing.JPanel {
         ContenedorPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         NombrePlatillo.setFont(new java.awt.Font("NSimSun", 1, 14)); // NOI18N
-        NombrePlatillo.setText("Nombre del paltillo:");
+        NombrePlatillo.setText("Nombre del platillo:");
 
-        ContenedorNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        ContenedorNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+        Nplatillo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        Nplatillo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ContenedorNombreMouseClicked(evt);
+                NplatilloMouseClicked(evt);
             }
         });
-        ContenedorNombre.addActionListener(new java.awt.event.ActionListener() {
+        Nplatillo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ContenedorNombreActionPerformed(evt);
+                NplatilloActionPerformed(evt);
             }
         });
-        ContenedorNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        Nplatillo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                ContenedorNombreKeyTyped(evt);
+                NplatilloKeyTyped(evt);
             }
         });
 
@@ -126,12 +130,12 @@ public class MenuSemanal extends javax.swing.JPanel {
 
         fechafinal.setDateFormatString("d/MM/yyy");
 
-        BuscarRecordatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
-        BuscarRecordatorio.setText("Buscar");
-        BuscarRecordatorio.setFocusPainted(false);
-        BuscarRecordatorio.addActionListener(new java.awt.event.ActionListener() {
+        Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar.png"))); // NOI18N
+        Buscar.setText("Buscar");
+        Buscar.setFocusPainted(false);
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarRecordatorioActionPerformed(evt);
+                BuscarActionPerformed(evt);
             }
         });
 
@@ -173,7 +177,7 @@ public class MenuSemanal extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(NombrePlatillo)
                 .addGap(18, 18, 18)
-                .addComponent(ContenedorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Nplatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ContenedorPanelLayout.createSequentialGroup()
@@ -181,7 +185,7 @@ public class MenuSemanal extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(fechafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(BuscarRecordatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ContenedorPanelLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(FechaInicio)
@@ -205,9 +209,9 @@ public class MenuSemanal extends javax.swing.JPanel {
                 .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fechafinal, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fechainicio, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BuscarRecordatorio)
+                    .addComponent(Buscar)
                     .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ContenedorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Nplatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(NombrePlatillo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(557, Short.MAX_VALUE))
             .addGroup(ContenedorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,121 +256,191 @@ public class MenuSemanal extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BuscarRecordatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarRecordatorioActionPerformed
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-        try {
+        String texto = Nplatillo.getText().trim(); // Captura el texto del JTextField
 
-            TablaMenuSemanal.setModel(new DefaultTableModel(null, new Object[]{"Id","Tipo Comida", "Lunes","Martes","Miercoles","Jueves","Viernes","Fecha Registro"}));
-
-            SimpleDateFormat df = new SimpleDateFormat("YYY/MM/d");
-            String date1 = df.format(fechainicio.getDate());
-            String date2 = df.format(fechafinal.getDate());
-
-            Data(date1, date2);
-
-        } catch (Exception e) {
-
-        }
-    }//GEN-LAST:event_BuscarRecordatorioActionPerformed
-
-    private void ContenedorNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContenedorNombreMouseClicked
-        if (evt.getClickCount() == 2) {
-            ContenedorNombre.setText("");
-
-        }
-    }//GEN-LAST:event_ContenedorNombreMouseClicked
-
-    private void ContenedorNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ContenedorNombreKeyTyped
-        char c = evt.getKeyChar();
-
-        if (!Character.isLetter(c) && c != KeyEvent.VK_BACK_SPACE && c != KeyEvent.VK_ENTER && c != KeyEvent.VK_SPACE) {
-            evt.consume(); // Esto evita que el carácter ingresado se muestre en el campo de texto
-
-            // Muestra el mensaje de alerta
-            JOptionPane.showMessageDialog(null, "Ingrese solo texto", "Error de caractér", JOptionPane.ERROR_MESSAGE);
+        if (texto.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un texto para buscar.");
+            return;
         }
 
-        String palabra = ContenedorNombre.getText();
-        if (palabra.length() > 0) {
-            char primeraletra = palabra.charAt(0);
-            palabra = Character.toUpperCase(primeraletra) + palabra.substring(1, palabra.length());
-            ContenedorNombre.setText(palabra);
-        }
-    }//GEN-LAST:event_ContenedorNombreKeyTyped
-
-    private void ContenedorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContenedorNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ContenedorNombreActionPerformed
-
-    //una tabla que muestra los días que no han sido registrados en la base de datos de acuerdo al ciclo escolar con el que se esta trabajando 
-    public void Data(String d1, String d2) {
+        // Conexión a la base de datos
         conexion conn = new conexion();
         Connection con = conn.Conectar();
-        PreparedStatement st = null;
+        PreparedStatement ps = null;
         ResultSet rs = null;
 
         try {
+            // Consulta SQL: busca en todas las columnas
 
-            if (d1.equals("") || d2.equals("")) {
-                st = con.prepareStatement("SELECT *FROM MENU_SEMANAL");
-                TablaMenuSemanal.setModel(new DefaultTableModel(null, new Object[]{"Id","Tipo Comida", "Lunes","Martes","Miercoles","Jueves","Viernes","Fecha Registro"}));
-                SimpleDateFormat df = new SimpleDateFormat("d/MM/yyy");
-                String date1 = df.format(fechainicio.getDate());
-                String date2 = df.format(fechafinal.getDate());
-                Data(date1, date2);
+            String sql = "SELECT tipo_comida, lunes, martes, miercoles, jueves, viernes "
+                    + "FROM MENU_SEMANAL "
+                    + "WHERE tipo_comida LIKE ? "
+                    + "OR lunes LIKE ? "
+                    + "OR martes LIKE ? "
+                    + "OR miercoles LIKE ? "
+                    + "OR jueves LIKE ? "
+                    + "OR viernes LIKE ?";
 
+            ps = con.prepareStatement(sql);
+            for (int i = 1; i <= 6; i++) {
+                ps.setString(i, "%" + texto + "%");
             }
-            rs = st.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) TablaMenuSemanal.getModel();
 
-            Object[] row;
+            rs = ps.executeQuery();
+
+            // Modelo para la tabla
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Tipo de comida");
+            modelo.addColumn("Lunes");
+            modelo.addColumn("Martes");
+            modelo.addColumn("Miercoles");
+            modelo.addColumn("Jueves");
+            modelo.addColumn("Viernes");
+
+            // Llenar la tabla con los resultados
+            while (rs.next()) {
+                Object[] fila = new Object[6];
+                fila[0] = rs.getString("Tipo_Comida");
+                fila[1] = rs.getString("Lunes");
+                fila[2] = rs.getString("Martes");
+                fila[3] = rs.getString("Miercoles");
+                fila[4] = rs.getString("Jueves");
+                fila[5] = rs.getString("Viernes");
+                modelo.addRow(fila);
+            }
+
+            // Asignar el modelo a la JTable
+            TablaMenuSemanal.setModel(modelo);
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al cerrar conexión: " + ex);
+            }
+        }
+
+    }//GEN-LAST:event_BuscarActionPerformed
+
+    private void NplatilloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NplatilloMouseClicked
+        if (evt.getClickCount() == 2) {
+            Nplatillo.setText("");
+
+        }
+    }//GEN-LAST:event_NplatilloMouseClicked
+
+    private void NplatilloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NplatilloKeyTyped
+
+    }//GEN-LAST:event_NplatilloKeyTyped
+
+    private void NplatilloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NplatilloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NplatilloActionPerformed
+
+    public void MostrarMenu() {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        conexion conn = new conexion();
+        Connection con = conn.Conectar();
+        try {
+
+            DefaultTableModel modelo = new DefaultTableModel();
+            TablaMenuSemanal.setModel(modelo);
+            TablaMenuSemanal.setAutoCreateRowSorter(true);
+
+            sorter = new TableRowSorter<>(modelo);
+            TablaMenuSemanal.setRowSorter(sorter);
+
+            String sql = ("SELECT tipo_comida, lunes , martes, miercoles, jueves, viernes FROM MENU_SEMANAL");
+
+            ps = con.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            modelo.addColumn("Tipo de comida ");
+            modelo.addColumn("Lunes");
+            modelo.addColumn("Martes");
+            modelo.addColumn("Miercoles");
+            modelo.addColumn("Jueves");
+            modelo.addColumn("Viernes");
+
+
+            /* centrar datos */
+            DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) TablaMenuSemanal.getTableHeader().getDefaultRenderer();
+            headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            headerRenderer.setFont(headerRenderer.getFont().deriveFont(Font.BOLD)); // Establecer la fuente en negritas
+
+            TablaMenuSemanal.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
+            TablaMenuSemanal.getColumnModel().getColumn(1).setHeaderRenderer(headerRenderer);
+            TablaMenuSemanal.getColumnModel().getColumn(2).setHeaderRenderer(headerRenderer);
+            TablaMenuSemanal.getColumnModel().getColumn(3).setHeaderRenderer(headerRenderer);
+            TablaMenuSemanal.getColumnModel().getColumn(4).setHeaderRenderer(headerRenderer);
+            TablaMenuSemanal.getColumnModel().getColumn(5).setHeaderRenderer(headerRenderer);
+
+            DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
+            ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
+            TablaMenuSemanal.getColumnModel().getColumn(0).setCellRenderer(ColumCenter);
+            TablaMenuSemanal.getColumnModel().getColumn(1).setCellRenderer(ColumCenter);
+            TablaMenuSemanal.getColumnModel().getColumn(2).setCellRenderer(ColumCenter);
+            TablaMenuSemanal.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
+            TablaMenuSemanal.getColumnModel().getColumn(4).setCellRenderer(ColumCenter);
+            TablaMenuSemanal.getColumnModel().getColumn(5).setCellRenderer(ColumCenter);
 
             while (rs.next()) {
-                row = new Object[8];
-                row[0] = rs.getString(1);
-                row[1] = rs.getString(2);
-                row[2] = rs.getString(3);
-                row[3] = rs.getString(4);
-                row[4] = rs.getString(5);
-                row[5] = rs.getString(6);
-                row[6] = rs.getString(7);
-                row[7] = rs.getString(8);
-
-                model.addRow(row);
+                Object[] filas = new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(filas);
             }
 
-        } catch (Exception e) {
-
-            //System.out.println(e.getMessage());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
         } finally {
             try {
                 // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (st != null) {
-                    st.close();
-                }
                 if (rs != null) {
                     rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
                 }
                 if (con != null) {
                     con.close();
                 }
             } catch (Exception e) {
-                e.printStackTrace();
                 JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
+    //una tabla que muestra los días que no han sido registrados en la base de datos de acuerdo al ciclo escolar con el que se esta trabajando 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BuscarRecordatorio;
+    private javax.swing.JButton Buscar;
     private javax.swing.JPanel ContenedorDeLaTablaEmpleados;
-    private javax.swing.JTextField ContenedorNombre;
     private javax.swing.JPanel ContenedorPanel;
     private javax.swing.JPanel ContenedorTitulo;
     private javax.swing.JLabel FechaFinal;
     private javax.swing.JLabel FechaInicio;
     private javax.swing.JLabel NombrePlatillo;
+    private javax.swing.JTextField Nplatillo;
     private javax.swing.JScrollPane ScrollTablaEmpleados;
     private javax.swing.JTable TablaMenuSemanal;
     private javax.swing.JLabel Titulo;
@@ -375,4 +449,5 @@ public class MenuSemanal extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser fechainicio;
     private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -2,10 +2,7 @@ package paneles;
 
 import Conexion.conexion;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.font.TextAttribute;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSetMetaData;
@@ -23,21 +20,13 @@ import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.poi.openxml4j.exceptions.OLE2NotOfficeXmlFileException;
-import java.text.SimpleDateFormat;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class inicio extends javax.swing.JPanel {
@@ -54,14 +43,11 @@ public class inicio extends javax.swing.JPanel {
         setBackground(new Color(0, 0, 0, 0));
         TablaCatalogo.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         TablaCatalogo.getTableHeader().setOpaque(false);
-        //TablaReloj.getTableHeader().setBackground(new Color(32, 136, 203));
-        //TablaReloj.getTableHeader().setForeground(new Color(255,255,255));
         TablaCatalogo.setRowHeight(25);
 
         setBackground(new Color(0, 0, 0, 0));
         TablaProductoIva.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         TablaProductoIva.getTableHeader().setOpaque(false);
-        //TablaReloj.getTableHeader().setBackground(new Color(32, 136, 203));
         TablaProductoIva.setRowHeight(25);
 
         MostarDatosCatalogo();
@@ -93,7 +79,7 @@ public class inicio extends javax.swing.JPanel {
         ScrollProductoIva = new javax.swing.JScrollPane();
         TablaProductoIva = new javax.swing.JTable();
         ScrollMenuSemanal = new javax.swing.JScrollPane();
-        TablaMenuSemanal = new javax.swing.JTable();
+        TablaMenu = new javax.swing.JTable();
         ProgressBar = new javax.swing.JProgressBar();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -238,7 +224,7 @@ public class inicio extends javax.swing.JPanel {
 
         TituloDeLaTabla.addTab("Productos IVA", ScrollProductoIva);
 
-        TablaMenuSemanal.setModel(new javax.swing.table.DefaultTableModel(
+        TablaMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -249,7 +235,7 @@ public class inicio extends javax.swing.JPanel {
                 "Tipo Comida", "Lunes ", "Martes", "Miercoles", "Jueves", "Viernes"
             }
         ));
-        ScrollMenuSemanal.setViewportView(TablaMenuSemanal);
+        ScrollMenuSemanal.setViewportView(TablaMenu);
 
         TituloDeLaTabla.addTab("Menu Semanal", ScrollMenuSemanal);
 
@@ -317,10 +303,8 @@ public class inicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-     //progress bar subir excel
+    //progress bar subir excel
     public static void pb() {
-
         Thread hilos = new Thread() {
             public void run() {
 
@@ -330,77 +314,138 @@ public class inicio extends javax.swing.JPanel {
                         Thread.sleep(4);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
-
                     }
-
                 }
             }
 
         };
-
         hilos.start();
-
     }
-    
-    private void SubirCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirCatalogoActionPerformed
-        // TODO add your handling code here:
 
-        SubirBD();
-        ImportarDocExcel();
+    //SUBIR EL CATALOGO A LA BASE DE DATOS 
+    private void SubirCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirCatalogoActionPerformed
+
+        SubirBdCatalogo();
         MostarDatosCatalogo();
     }//GEN-LAST:event_SubirCatalogoActionPerformed
-    
-    
+
     //Registra los productos del catalogo de excel a la base de datos
     public static void SubirALaBaseCatalogo() throws IOException, SQLException {
 
-        conexion con = new conexion();
-        PreparedStatement psDias = null, psSubir = null, psDesactivar = null, ps = null, pst = null, pstd = null, pschk = null, psDiaInsertado = null, psSobreescribir = null;
-        ResultSet rs = null;
-        ResultSet rst = null;
-        Connection conn = con.Conectar();
+        conexion conn = new conexion();
+        Connection con = null;
+        PreparedStatement ps = null;
 
-        java.sql.Date fecha2 = null;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("y/M/d");
-        try {
-            
-            /*Se inserta los datos de catalogo desde el excel a la*/
-            {
-             
-                conn.close();
-                JOptionPane.showMessageDialog(null, "Catalogo registrado con exito", "", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (rs != null) {
-                    rs.close();
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos Excel (*.xlsx)", "xlsx");
+        fileChooser.setFileFilter(filter);
+
+        int result = fileChooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+
+            try (FileInputStream file = new FileInputStream(selectedFile); XSSFWorkbook workbook = new XSSFWorkbook(file)) {
+
+                org.apache.poi.ss.usermodel.Sheet sheet = workbook.getSheetAt(0);
+                con = conn.Conectar();
+
+                String sql = "INSERT INTO CATALOGO (partida, rubro, unidad_medida, descripcion, marca, cantidad, precio, observacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+                ps = con.prepareStatement(sql);
+
+                int numFilas = sheet.getLastRowNum();
+                int registrosInsertados = 0;
+
+                for (int i = 1; i <= numFilas; i++) { // Empieza desde fila 2
+                    Row fila = sheet.getRow(i);
+                    if (fila == null) //si la fila esta vacia, saltar 
+                    {
+                        continue;
+                    }
+                    
+                    ps.setString(1, obtenerValorCelda(fila, 0));
+                    ps.setString(2, obtenerValorCelda(fila, 1));
+                    ps.setString(3, obtenerValorCelda(fila, 2));
+                    ps.setString(4, obtenerValorCelda(fila, 3));
+                    ps.setString(5, obtenerValorCelda(fila, 4));
+                    ps.setString(6, obtenerValorCelda(fila, 5));
+                    ps.setString(7, obtenerValorCelda(fila, 6));
+                    ps.setString(8, obtenerValorCelda(fila, 7));
+
+                    ps.addBatch(); // Agrega al batch
+                    registrosInsertados++;
+
+                    // Ejecuta cada 500 filas para optimizar rendimiento
+                    if (registrosInsertados % 500 == 0) {
+                        ps.executeBatch();
+                    }
                 }
-                if (psDesactivar != null) {
-                    psDesactivar.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (psSubir != null) {
-                    psSubir.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-                
+
+                // Ejecutar el resto
+                ps.executeBatch();
+
+                JOptionPane.showMessageDialog(null, "Archivo subido con éxito. Registros insertados: " + registrosInsertados,
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null, "Archivo no encontrado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error SQL: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                    if (con != null) {
+                        con.close();
+                    }
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage());
+                }
             }
         }
 
     }
-    
-    
-    //Muestra la las incidencias antes de subir a la base de datos
+
+    private static String obtenerValorCelda(Row fila, int indice) {
+        Cell celda = fila.getCell(indice);
+        if (celda == null) {
+            return "";
+        }
+
+        switch (celda.getCellType()) {
+            case STRING:
+                return celda.getStringCellValue().trim();
+            case NUMERIC:
+                if (DateUtil.isCellDateFormatted(celda)) {
+                    return celda.getDateCellValue().toString();
+                } else {
+                    double val = celda.getNumericCellValue();
+                    if (val == Math.floor(val)) {
+                        return String.valueOf((long) val);
+                    } else {
+                        return String.valueOf(val);
+                    }
+                }
+            case BOOLEAN:
+                return String.valueOf(celda.getBooleanCellValue());
+            case FORMULA:
+                try {
+                    return celda.getStringCellValue();
+                } catch (IllegalStateException e) {
+                    return String.valueOf(celda.getNumericCellValue());
+                }
+            default:
+                return "";
+        }
+    }
+
+    //Mostramos el el catalogo de productos de catalogo
     public void MostarDatosCatalogo() {
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -416,7 +461,7 @@ public class inicio extends javax.swing.JPanel {
             sorter = new TableRowSorter<>(modelo);
             TablaCatalogo.setRowSorter(sorter);
 
-            String sql = ("");
+            String sql = ("select *from catalogo");
 
             ps = con.prepareStatement(sql);
 
@@ -425,12 +470,14 @@ public class inicio extends javax.swing.JPanel {
             ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
             int cantidadColumnas = rsMd.getColumnCount();
 
-            modelo.addColumn("Id Empleado");
-            modelo.addColumn("Nombre Del Empleado");
-            modelo.addColumn("Hora");
-            modelo.addColumn("Fecha");
-            modelo.addColumn("Estado");
-
+            modelo.addColumn("Partida");
+            modelo.addColumn("Rubro");
+            modelo.addColumn("Unidad medida");
+            modelo.addColumn("Descripcion");
+            modelo.addColumn("Marca");
+            modelo.addColumn("Cantidad ");
+            modelo.addColumn("Precio");
+            modelo.addColumn("Observacion");
 
             /* centrar datos */
             DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) TablaCatalogo.getTableHeader().getDefaultRenderer();
@@ -438,17 +485,24 @@ public class inicio extends javax.swing.JPanel {
             headerRenderer.setFont(headerRenderer.getFont().deriveFont(Font.BOLD)); // Establecer la fuente en negritas
 
             TablaCatalogo.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
+            TablaCatalogo.getColumnModel().getColumn(1).setHeaderRenderer(headerRenderer);
             TablaCatalogo.getColumnModel().getColumn(2).setHeaderRenderer(headerRenderer);
             TablaCatalogo.getColumnModel().getColumn(3).setHeaderRenderer(headerRenderer);
             TablaCatalogo.getColumnModel().getColumn(4).setHeaderRenderer(headerRenderer);
+            TablaCatalogo.getColumnModel().getColumn(5).setHeaderRenderer(headerRenderer);
+            TablaCatalogo.getColumnModel().getColumn(6).setHeaderRenderer(headerRenderer);
+            TablaCatalogo.getColumnModel().getColumn(7).setHeaderRenderer(headerRenderer);
 
             DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
             ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
-            TablaCatalogo.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(1).setCellRenderer(ColumCenter);
             TablaCatalogo.getColumnModel().getColumn(0).setCellRenderer(ColumCenter);
+            TablaCatalogo.getColumnModel().getColumn(1).setCellRenderer(ColumCenter);
             TablaCatalogo.getColumnModel().getColumn(2).setCellRenderer(ColumCenter);
+            TablaCatalogo.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
             TablaCatalogo.getColumnModel().getColumn(4).setCellRenderer(ColumCenter);
+            TablaCatalogo.getColumnModel().getColumn(5).setCellRenderer(ColumCenter);
+            TablaCatalogo.getColumnModel().getColumn(6).setCellRenderer(ColumCenter);
+            TablaCatalogo.getColumnModel().getColumn(7).setCellRenderer(ColumCenter);
 
             while (rs.next()) {
                 Object[] filas = new Object[cantidadColumnas];
@@ -478,280 +532,7 @@ public class inicio extends javax.swing.JPanel {
         }
     }
 
-
-    private void SubirProductosIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirProductosIVAActionPerformed
-
-        SubirBD();
-        MostarProductosIVA();
-    }//GEN-LAST:event_SubirProductosIVAActionPerformed
-
-    //Registra los productos del ProductoIva de excel a la base de datos
-    public static void SubirALaBaseProductoIva() throws IOException, SQLException {
-
-        conexion con = new conexion();
-        PreparedStatement psDias = null, psSubir = null, psDesactivar = null, ps = null, pst = null, pstd = null, pschk = null, psDiaInsertado = null, psSobreescribir = null;
-        ResultSet rs = null;
-        ResultSet rst = null;
-        Connection conn = con.Conectar();
-
-        java.sql.Date fecha2 = null;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("y/M/d");
-        try {
-            
-            /*Se inserta los datos de catalogo desde el excel a la*/
-            {
-             
-                conn.close();
-                JOptionPane.showMessageDialog(null, "Catalogo registrado con exito", "", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (rs != null) {
-                    rs.close();
-                }
-                if (psDesactivar != null) {
-                    psDesactivar.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (psSubir != null) {
-                    psSubir.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-                
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-    }
-    
-    public void MostarProductosIVA() {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        conexion conn = new conexion();
-        Connection con = conn.Conectar();
-        try {
-
-            DefaultTableModel modelo = new DefaultTableModel();
-            TablaCatalogo.setModel(modelo);
-            TablaCatalogo.setAutoCreateRowSorter(true);
-
-            sorter = new TableRowSorter<>(modelo);
-            TablaCatalogo.setRowSorter(sorter);
-
-            String sql = ("");
-
-            ps = con.prepareStatement(sql);
-
-            rs = ps.executeQuery();
-
-            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
-            int cantidadColumnas = rsMd.getColumnCount();
-
-            modelo.addColumn("Id Empleado");
-            modelo.addColumn("Nombre Del Empleado");
-            modelo.addColumn("Hora");
-            modelo.addColumn("Fecha");
-            modelo.addColumn("Estado");
-
-
-            /* centrar datos */
-            DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) TablaCatalogo.getTableHeader().getDefaultRenderer();
-            headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            headerRenderer.setFont(headerRenderer.getFont().deriveFont(Font.BOLD)); // Establecer la fuente en negritas
-
-            TablaCatalogo.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
-            TablaCatalogo.getColumnModel().getColumn(2).setHeaderRenderer(headerRenderer);
-            TablaCatalogo.getColumnModel().getColumn(3).setHeaderRenderer(headerRenderer);
-            TablaCatalogo.getColumnModel().getColumn(4).setHeaderRenderer(headerRenderer);
-
-            DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
-            ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
-            TablaCatalogo.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(1).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(0).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(2).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(4).setCellRenderer(ColumCenter);
-
-            while (rs.next()) {
-                Object[] filas = new Object[cantidadColumnas];
-                for (int i = 0; i < cantidadColumnas; i++) {
-                    filas[i] = rs.getObject(i + 1);
-                }
-                modelo.addRow(filas);
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
-    
-    private void SubirMenuSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirMenuSemanalActionPerformed
-        // TODO add your handling code here:
-        SubirBD();
-        MostarMenuSemanal();
-    }//GEN-LAST:event_SubirMenuSemanalActionPerformed
-
-    
-    //Registra los productos del ProductoIva de excel a la base de datos
-    public static void SubirALaBaseMenusemanal() throws IOException, SQLException {
-
-        conexion con = new conexion();
-        PreparedStatement psDias = null, psSubir = null, psDesactivar = null, ps = null, pst = null, pstd = null, pschk = null, psDiaInsertado = null, psSobreescribir = null;
-        ResultSet rs = null;
-        ResultSet rst = null;
-        Connection conn = con.Conectar();
-
-        java.sql.Date fecha2 = null;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("y/M/d");
-        try {
-            
-            /*Se inserta los datos de catalogo desde el excel a la*/
-            {
-             
-                conn.close();
-                JOptionPane.showMessageDialog(null, "Catalogo registrado con exito", "", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (rs != null) {
-                    rs.close();
-                }
-                if (psDesactivar != null) {
-                    psDesactivar.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (psSubir != null) {
-                    psSubir.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-                
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
-    }
-    
-    public void MostarMenuSemanal() {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        conexion conn = new conexion();
-        Connection con = conn.Conectar();
-        try {
-
-            DefaultTableModel modelo = new DefaultTableModel();
-            TablaCatalogo.setModel(modelo);
-            TablaCatalogo.setAutoCreateRowSorter(true);
-
-            sorter = new TableRowSorter<>(modelo);
-            TablaCatalogo.setRowSorter(sorter);
-
-            String sql = ("");
-
-            ps = con.prepareStatement(sql);
-
-            rs = ps.executeQuery();
-
-            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
-            int cantidadColumnas = rsMd.getColumnCount();
-
-            modelo.addColumn("Id Empleado");
-            modelo.addColumn("Nombre Del Empleado");
-            modelo.addColumn("Hora");
-            modelo.addColumn("Fecha");
-            modelo.addColumn("Estado");
-
-
-            /* centrar datos */
-            DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) TablaCatalogo.getTableHeader().getDefaultRenderer();
-            headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
-            headerRenderer.setFont(headerRenderer.getFont().deriveFont(Font.BOLD)); // Establecer la fuente en negritas
-
-            TablaCatalogo.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
-            TablaCatalogo.getColumnModel().getColumn(2).setHeaderRenderer(headerRenderer);
-            TablaCatalogo.getColumnModel().getColumn(3).setHeaderRenderer(headerRenderer);
-            TablaCatalogo.getColumnModel().getColumn(4).setHeaderRenderer(headerRenderer);
-
-            DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
-            ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
-            TablaCatalogo.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(1).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(0).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(2).setCellRenderer(ColumCenter);
-            TablaCatalogo.getColumnModel().getColumn(4).setCellRenderer(ColumCenter);
-
-            while (rs.next()) {
-                Object[] filas = new Object[cantidadColumnas];
-                for (int i = 0; i < cantidadColumnas; i++) {
-                    filas[i] = rs.getObject(i + 1);
-                }
-                modelo.addRow(filas);
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
-    
-    
-    
-    
-    
-    private void TablaCatalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaCatalogoMouseClicked
-
-    }//GEN-LAST:event_TablaCatalogoMouseClicked
-
-    
-    public void SubirBD() {
+    public void SubirBdCatalogo() {
 
         try {
             SubirALaBaseCatalogo();
@@ -761,20 +542,19 @@ public class inicio extends javax.swing.JPanel {
             Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
-    
 
     
-    //sube el horario por dia por medio de excel
-    public static void ImportarDocExcel() {
+    /// subir a base de datos los producto con iva
+    
+    
+    public static void SubirALaBaseProductoIva() throws IOException, SQLException {
 
-        conexion con = new conexion();
-        PreparedStatement ps = null, psd = null;
-        Connection conn = con.Conectar();
+       conexion conn = new conexion();
+        Connection con = null;
+        PreparedStatement ps = null;
+
         JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos Excel", "xlsx");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos Excel (*.xlsx)", "xlsx");
         fileChooser.setFileFilter(filter);
 
         int result = fileChooser.showOpenDialog(null);
@@ -782,102 +562,351 @@ public class inicio extends javax.swing.JPanel {
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFile = fileChooser.getSelectedFile();
 
-            try {
+            try (FileInputStream file = new FileInputStream(selectedFile); XSSFWorkbook workbook = new XSSFWorkbook(file)) {
 
-                FileInputStream file = new FileInputStream(selectedFile);
-                psd = conn.prepareStatement("Delete from ");
+                org.apache.poi.ss.usermodel.Sheet sheet = workbook.getSheetAt(0);
+                con = conn.Conectar();
 
-                XSSFWorkbook wb = new XSSFWorkbook(file);
-                Sheet sheet = wb.getSheetAt(0);
+                String sql = "INSERT INTO PRODUCTo_IVA (id, rubro, unidad, articulo, marca, cantidad ) VALUES (?, ?, ?, ?, ?, ?)";
+
+                ps = con.prepareStatement(sql);
 
                 int numFilas = sheet.getLastRowNum();
+                int registrosInsertados = 0;
 
-                ///Elimina la tabla reloj si el archivo nuevo es correcto
-                /*for (int b = 6; b <= numFilas; b++) {
-                    Row fila = sheet.getRow(b);
-                    if (fila.getCell(1).getStringCellValue() != null
-                            && fila.getCell(2).getStringCellValue() != null
-                            && fila.getCell(3).getStringCellValue() != null
-                            && fila.getCell(4).getStringCellValue() != null
-                            && fila.getCell(5).getStringCellValue() != null
-                            && fila.getCell(6).getStringCellValue() == "") {
-
-                        psd.execute();
+                for (int i = 1; i <= numFilas; i++) { // Empieza desde fila 2
+                    Row fila = sheet.getRow(i);
+                    if (fila == null) //si la fila esta vacia, saltar 
+                    {
+                        continue;
                     }
-                }*/
-                psd.execute();
-                /*
-                for (int a = 6; a <= numFilas; a++) {
-                    Row fila = sheet.getRow(a);
+                    
+                    ps.setString(1, obtenerValorCelda(fila, 0));
+                    ps.setString(2, obtenerValorCelda(fila, 1));
+                    ps.setString(3, obtenerValorCelda(fila, 2));
+                    ps.setString(4, obtenerValorCelda(fila, 3));
+                    ps.setString(5, obtenerValorCelda(fila, 4));
+                    ps.setString(6, obtenerValorCelda(fila, 5));
 
-                    ps = conn.prepareStatement("INSERT INTO horario_reloj (id, nombre, fecha_hora, estado) VALUES(?,?,?,?)");
+                    ps.addBatch(); // Agrega al batch
+                    registrosInsertados++;
 
-                    ps.setString(1, fila.getCell(1).getStringCellValue());
-                    ps.setString(2, fila.getCell(2).getStringCellValue());
-                    ps.setString(3, fila.getCell(3).getStringCellValue());
-                    ps.setString(4, fila.getCell(4).getStringCellValue());
-
-                    ps.execute();
-
-                }
-                 */
-
-                conn.setAutoCommit(false);
-                ps = conn.prepareStatement("INSERT INTO Productos (id,partida,rubro,unidad_medida,descripcion,marca,cantidad, precio,observacion) VALUES(?,?,?,?,?,?,?,?,?)");
-
-                for (int a = 8; a <= numFilas; a++) {
-                    Row fila = sheet.getRow(a);
-                    ps.setString(1, fila.getCell(1).getStringCellValue());
-                    ps.setString(2, fila.getCell(2).getStringCellValue());
-                    ps.setString(3, fila.getCell(3).getStringCellValue());
-                    ps.setString(4, fila.getCell(4).getStringCellValue());
-                    ps.setString(5, fila.getCell(4).getStringCellValue());
-                    ps.setString(6, fila.getCell(4).getStringCellValue());
-                    ps.setString(7, fila.getCell(4).getStringCellValue());
-                    ps.setString(8, fila.getCell(4).getStringCellValue());
-                    ps.addBatch();
+                    // Ejecuta cada 500 filas para optimizar rendimiento
+                    if (registrosInsertados % 500 == 0) {
+                        ps.executeBatch();
+                    }
                 }
 
+                // Ejecutar el resto
                 ps.executeBatch();
-                conn.commit();
-                conn.setAutoCommit(true);
-                pb();
-                JOptionPane.showMessageDialog(null, "Archivo subído con éxito", "", JOptionPane.INFORMATION_MESSAGE);
-            } catch (FileNotFoundException e) {
-                JOptionPane.showMessageDialog(null, "Datos Agregados con exito" + e);
-            } catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(null, "Error: Excel no permitido, por favor sube un archivo valido", "", JOptionPane.ERROR_MESSAGE);
-            } catch (com.mysql.cj.jdbc.exceptions.MysqlDataTruncation e) {
-                JOptionPane.showMessageDialog(null, "Error al intentar leer el documento", "", JOptionPane.ERROR_MESSAGE);
-            } catch (OLE2NotOfficeXmlFileException e) {
-                JOptionPane.showMessageDialog(null, "Error: Excel no permitido, por favor sube un archivo valido", "", JOptionPane.ERROR_MESSAGE);
 
+                JOptionPane.showMessageDialog(null, "Archivo subido con éxito. Registros insertados: " + registrosInsertados,
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null, "Archivo no encontrado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error SQL: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             } finally {
                 try {
-                    // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
-                    if (psd != null) {
-                        psd.close();
-                    }
                     if (ps != null) {
                         ps.close();
                     }
-                    if (conn != null) {
-                        conn.close();
+                    if (con != null) {
+                        con.close();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage());
                 }
+            }
+        }
+
+    }
+
+    public void MostarProductosIVA() {
+       PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        conexion conn = new conexion();
+        Connection con = conn.Conectar();
+        try {
+
+            DefaultTableModel modelo = new DefaultTableModel();
+            TablaProductoIva.setModel(modelo);
+            TablaProductoIva.setAutoCreateRowSorter(true);
+
+            sorter = new TableRowSorter<>(modelo);
+            TablaProductoIva.setRowSorter(sorter);
+
+            String sql = ("select rubro, unidad, articulo, marca, cantidad from PRODUCTo_IVA");
+
+            ps = con.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            modelo.addColumn("Rubro");
+            modelo.addColumn("Unidad");
+            modelo.addColumn("Articulo");
+            modelo.addColumn("Marca");
+            modelo.addColumn("Cantidad");
+
+
+            /* centrar datos */
+            DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) TablaProductoIva.getTableHeader().getDefaultRenderer();
+            headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            headerRenderer.setFont(headerRenderer.getFont().deriveFont(Font.BOLD)); // Establecer la fuente en negritas
+
+            TablaProductoIva.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
+            TablaProductoIva.getColumnModel().getColumn(1).setHeaderRenderer(headerRenderer);
+            TablaProductoIva.getColumnModel().getColumn(2).setHeaderRenderer(headerRenderer);
+            TablaProductoIva.getColumnModel().getColumn(3).setHeaderRenderer(headerRenderer);
+            TablaProductoIva.getColumnModel().getColumn(4).setHeaderRenderer(headerRenderer);
+            
+            DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
+            ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
+            TablaProductoIva.getColumnModel().getColumn(0).setCellRenderer(ColumCenter);
+            TablaProductoIva.getColumnModel().getColumn(1).setCellRenderer(ColumCenter);
+            TablaProductoIva.getColumnModel().getColumn(2).setCellRenderer(ColumCenter);
+            TablaProductoIva.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
+            TablaProductoIva.getColumnModel().getColumn(4).setCellRenderer(ColumCenter);
+
+            while (rs.next()) {
+                Object[] filas = new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(filas);
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
 
     
+    /// subir a base de datos el menu_semanal  
+    private void SubirMenuSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirMenuSemanalActionPerformed
+        try {
+            // TODO add your handling code here:
+            SubirALaBaseMenusemanal();
+        } catch (IOException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            MostarMenuSemanal();
+    }//GEN-LAST:event_SubirMenuSemanalActionPerformed
+
+    public static void SubirALaBaseMenusemanal() throws IOException, SQLException {
+
+        conexion conn = new conexion();
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos Excel (*.xlsx)", "xlsx");
+        fileChooser.setFileFilter(filter);
+
+        int result = fileChooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+
+            try (FileInputStream file = new FileInputStream(selectedFile); XSSFWorkbook workbook = new XSSFWorkbook(file)) {
+
+                org.apache.poi.ss.usermodel.Sheet sheet = workbook.getSheetAt(0);
+                con = conn.Conectar();
+
+                String sql = "INSERT INTO MENU_SEMANAL (id_menu, tipo_comida, lunes, martes, miercoles, jueves, viernes ) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                ps = con.prepareStatement(sql);
+
+                int numFilas = sheet.getLastRowNum();
+                int registrosInsertados = 0;
+
+                for (int i = 1; i <= numFilas; i++) { // Empieza desde fila 6 como en tu código original
+                    Row fila = sheet.getRow(i);
+                    if (fila == null) {
+                        continue;
+                    }
+                    
+                    ps.setString(1, obtenerValorCelda(fila, 0));
+                    ps.setString(2, obtenerValorCelda(fila, 1));
+                    ps.setString(3, obtenerValorCelda(fila, 2));
+                    ps.setString(4, obtenerValorCelda(fila, 3));
+                    ps.setString(5, obtenerValorCelda(fila, 4));
+                    ps.setString(6, obtenerValorCelda(fila, 5));
+                    ps.setString(7, obtenerValorCelda(fila, 6));
+                    
+                    ps.addBatch(); // Agrega al batch
+                    registrosInsertados++;
+
+                    // Ejecuta cada 500 filas para optimizar rendimiento
+                    if (registrosInsertados % 500 == 0) {
+                        ps.executeBatch();
+                    }
+                }
+
+                // Ejecutar el resto
+                ps.executeBatch();
+
+                JOptionPane.showMessageDialog(null, "Archivo subido con éxito. Registros insertados: " + registrosInsertados,
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(null, "Archivo no encontrado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error SQL: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } finally {
+                try {
+                    if (ps != null) {
+                        ps.close();
+                    }
+                    if (con != null) {
+                        con.close();
+                    }
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+    public void MostarMenuSemanal() {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        conexion conn = new conexion();
+        Connection con = conn.Conectar();
+        try {
+
+            DefaultTableModel modelo = new DefaultTableModel();
+            TablaMenu.setModel(modelo);
+            TablaMenu.setAutoCreateRowSorter(true);
+
+            sorter = new TableRowSorter<>(modelo);
+            TablaMenu.setRowSorter(sorter);
+
+            String sql = ("SELECT tipo_comida, lunes , martes, miercoles, jueves, viernes FROM MENU_SEMANAL");
+
+            ps = con.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
+            int cantidadColumnas = rsMd.getColumnCount();
+
+            modelo.addColumn("Tipo de comida ");
+            modelo.addColumn("Lunes");
+            modelo.addColumn("Martes");
+            modelo.addColumn("Miercoles");
+            modelo.addColumn("Jueves");
+            modelo.addColumn("Viernes");
+
+
+           
+            DefaultTableCellRenderer headerRenderer = (DefaultTableCellRenderer) TablaMenu.getTableHeader().getDefaultRenderer();
+            headerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+            headerRenderer.setFont(headerRenderer.getFont().deriveFont(Font.BOLD)); // Establecer la fuente en negritas
+
+            TablaMenu.getColumnModel().getColumn(0).setHeaderRenderer(headerRenderer);
+            TablaMenu.getColumnModel().getColumn(2).setHeaderRenderer(headerRenderer);
+            TablaMenu.getColumnModel().getColumn(3).setHeaderRenderer(headerRenderer);
+            TablaMenu.getColumnModel().getColumn(4).setHeaderRenderer(headerRenderer);
+            TablaMenu.getColumnModel().getColumn(5).setHeaderRenderer(headerRenderer);
+
+            DefaultTableCellRenderer ColumCenter = new DefaultTableCellRenderer();
+            ColumCenter.setHorizontalAlignment(SwingConstants.CENTER);
+            
+            TablaMenu.getColumnModel().getColumn(0).setCellRenderer(ColumCenter);
+            TablaMenu.getColumnModel().getColumn(1).setCellRenderer(ColumCenter);
+            TablaMenu.getColumnModel().getColumn(2).setCellRenderer(ColumCenter);
+            TablaMenu.getColumnModel().getColumn(3).setCellRenderer(ColumCenter);
+            TablaMenu.getColumnModel().getColumn(4).setCellRenderer(ColumCenter);
+            TablaMenu.getColumnModel().getColumn(5).setCellRenderer(ColumCenter);
+
+            while (rs.next()) {
+                Object[] filas = new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i] = rs.getObject(i + 1);
+                }
+                modelo.addRow(filas);
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                // Cerrar ResultSet, PreparedStatement y Connection en el orden adecuado
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void TablaCatalogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaCatalogoMouseClicked
+
+    }//GEN-LAST:event_TablaCatalogoMouseClicked
 
     
+    private void SubirProductosIVAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubirProductosIVAActionPerformed
+        try {
+            SubirALaBaseProductoIva();
+        } catch (IOException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        MostarProductosIVA();
+    }//GEN-LAST:event_SubirProductosIVAActionPerformed
 
+    /*
+    public void  SubirBDmenu() {
+
+        try {
+            SubirALaBaseMenusemanal();
+        } catch (IOException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContenedorMenu;
@@ -891,7 +920,7 @@ public class inicio extends javax.swing.JPanel {
     private javax.swing.JButton SubirMenuSemanal;
     private javax.swing.JButton SubirProductosIVA;
     private javax.swing.JTable TablaCatalogo;
-    private javax.swing.JTable TablaMenuSemanal;
+    private javax.swing.JTable TablaMenu;
     private javax.swing.JTable TablaProductoIva;
     private javax.swing.JLabel Titulo;
     private javax.swing.JTabbedPane TituloDeLaTabla;
